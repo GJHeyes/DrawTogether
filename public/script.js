@@ -14,6 +14,7 @@ let penDown = false
 let draw = false;
 let localUser = ""
 const colorArray = ["red","blue","yellow","green","pink","orange","purple"]
+let userArray = []
 
 const randomColour = colorArray[Math.floor(Math.random()*7)]
 myCursor.classList.add(randomColour)
@@ -64,35 +65,47 @@ socket.on("pendrawing", function (userInfo){
     addUser(userInfo.userId)
     const userPen = document.getElementById(`userPen-${localUser}`);
     userPen.classList.add('hidden')
+    const userCanvas = document.getElementById(`userCanvas-${localUser}`);
+    userCanvas.classList.add('hidden')
+    if(userInfo.userId !== localUser){
+      userArray.push(userInfo.userId)
+    }
   }
   otherUserDrawing(userInfo)
 })
 
 function otherUserDrawing(userInfo){
-  
+  console.log(userArray)
   
   const {x, y , userId, penDown, otherWidth, otherHeight,pageX,pageY} = userInfo
   if(userId !== localUser){
-  //const {offsetLeft,offsetTop} = canvas 
-  //const theirX = pageX - offsetLeft
-  //const thierY = pageY- offsetTop
     const width = ((window.innerWidth-1400)/2) - ((otherWidth-1400)/2);
     const height = ((window.innerHeight-800)/2) - ((otherHeight-800)/2); 
     const userPen = document.getElementById(`userPen-${userId}`);
+    const userNum = userArray.indexOf(userId)
+    const newCanvas = document.getElementById(`canvas${userNum}`);
+    const newCtx = newCanvas.getContext('2d')
     //const userCanvas = document.getElementById(`userCanvas-${userId}`);
-    const canvas2 = document.getElementById('canvas2')
-    const ctxOtherUser = canvas2.getContext('2d')
+    //const ctxNew = userCanvas.getContext('2d')
+    
+    // const canvas2 = document.getElementById('canvas2')
+    // const ctxOtherUser = canvas2.getContext('2d')
     userPen.setAttribute("style", `top: ${pageY+height}px; left: ${pageX+width}px`)
 
     if(penDown){
-      //otherCursor.setAttribute("style", `top: ${pageY+height}px; left: ${pageX+width}px`)
-      //userPen.setAttribute("style", `top: ${pageY+height}px; left: ${pageX+width}px`)
-      ctxOtherUser.strokeStyle = '#A020F0'
-      ctxOtherUser.lineTo(x,y)
-      ctxOtherUser.stroke()
+      // ctxOtherUser.strokeStyle = '#A020F0'
+      // ctxOtherUser.lineTo(x,y)
+      // ctxOtherUser.stroke()
+      // ctxNew.strokeStyle = '#A020F0'
+      // ctxNew.lineTo(x,y)
+      // ctxNew.stroke()
+      newCtx.strokeStyle = '#A020F0'
+      newCtx.lineTo(x,y)
+      newCtx.stroke()
     }else if(!penDown){
-      //otherCursor.setAttribute("style", `top: ${pageY+height}px; left: ${pageX+width}px`)
-      ctxOtherUser.moveTo(x, y)
+      //ctxOtherUser.moveTo(x, y)
+      //ctxNew.moveTo(x, y)
+      newCtx.moveTo(x, y)
     }
   }
 }
@@ -107,13 +120,14 @@ socket.on("user", function (user){
 socket.on("disconnected", function(user){
   const userPen = document.getElementById(`userPen-${user}`);
   penBox.removeChild(userPen)
+  userArray = userArray.filter((i) => i !== user)
 })
 
 
 function addUser(user){
-  const userCanvas = document.createElement('canvas'),
-    userPointer = document.createElement('div'),
-    randomColour = colorArray[Math.floor(Math.random()*7)]
+  //const userCanvas = document.createElement('canvas'),
+  const  userPointer = document.createElement('div'),
+    randomColour = colorArray[Math.floor(Math.random()*7)];
   /*userCanvas.setAttribute('id',`userCanvas-${user}`)
   userCanvas.style.width = "1400px";
   userCanvas.style.height = "800px"*/
