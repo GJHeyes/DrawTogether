@@ -31,6 +31,7 @@ canvas{
 }
 
 .cursor{
+    z-index: 30;
     position: absolute;
     background-image: url("./pencil.png");
     background-size: cover;

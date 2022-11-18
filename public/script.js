@@ -62,12 +62,13 @@ document.addEventListener('mouseup', event=>{
 
 socket.on("pendrawing", function (userInfo){
   if(!document.getElementById(`userPen-${userInfo.userId}`)){
-    addUser(userInfo.userId)
-    const userPen = document.getElementById(`userPen-${localUser}`);
-    userPen.classList.add('hidden')
-    const userCanvas = document.getElementById(`userCanvas-${localUser}`);
-    userCanvas.classList.add('hidden')
+    //addUser(userInfo.userId)
+    //const userPen = document.getElementById(`userPen-${localUser}`);
+    //userPen.classList.add('hidden')
+    //const userCanvas = document.getElementById(`userCanvas-${localUser}`);
+    //userCanvas.classList.add('hidden')
     if(userInfo.userId !== localUser){
+      addUser(userInfo.userId)
       userArray.push(userInfo.userId)
     }
   }
@@ -75,8 +76,6 @@ socket.on("pendrawing", function (userInfo){
 })
 
 function otherUserDrawing(userInfo){
-  console.log(userArray)
-  
   const {x, y , userId, penDown, otherWidth, otherHeight,pageX,pageY} = userInfo
   if(userId !== localUser){
     const width = ((window.innerWidth-1400)/2) - ((otherWidth-1400)/2);
@@ -118,9 +117,13 @@ socket.on("user", function (user){
 })
 
 socket.on("disconnected", function(user){
-  const userPen = document.getElementById(`userPen-${user}`);
-  penBox.removeChild(userPen)
-  userArray = userArray.filter((i) => i !== user)
+  try{
+    const userPen = document.getElementById(`userPen-${user}`);
+    penBox.removeChild(userPen)
+    userArray = userArray.filter((i) => i !== user)
+  }catch(error){
+    console.log("pen not yet created")
+  }
 })
 
 
