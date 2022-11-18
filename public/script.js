@@ -65,22 +65,22 @@ function otherUserDrawing(userInfo){
     const width = ((window.innerWidth-1400)/2) - ((otherWidth-1400)/2);
     const height = ((window.innerHeight-800)/2) - ((otherHeight-800)/2); 
     const userPen = document.getElementById(`userPen-${userId}`);
-    const userNum = userArray.indexOf(userId)
-    const newCanvas = document.getElementById(`canvas${userNum}`);
-    const newCtx = newCanvas.getContext('2d')
-    //const userCanvas = document.getElementById(`userCanvas-${userId}`);
-    //const ctxNew = userCanvas.getContext('2d')
+    //const userNum = userArray.indexOf(userId)
+    // const newCanvas = document.getElementById(`canvas${userNum}`);
+    // const newCtx = newCanvas.getContext('2d')
+    const userCanvas = document.getElementById(`userCanvas-${userId}`);
+    const ctxNew = userCanvas.getContext('2d')
     userPen.setAttribute("style", `top: ${pageY+height}px; left: ${pageX+width}px`)
     if(penDown){
-      // ctxNew.strokeStyle = '#A020F0'
-      // ctxNew.lineTo(x,y)
-      // ctxNew.stroke()
-      newCtx.strokeStyle = '#A020F0'
-      newCtx.lineTo(x,y)
-      newCtx.stroke()
+      ctxNew.strokeStyle = '#A020F0'
+      ctxNew.lineTo(x,y)
+      ctxNew.stroke()
+      // newCtx.strokeStyle = '#A020F0'
+      // newCtx.lineTo(x,y)
+      // newCtx.stroke()
     }else if(!penDown){
-      //ctxNew.moveTo(x, y)
-      newCtx.moveTo(x, y)
+      ctxNew.moveTo(x, y)
+      //newCtx.moveTo(x, y)
     }
   }
 }
@@ -103,19 +103,18 @@ socket.on("disconnected", function(user){
 
 
 function addUser(user){
-  //const userCanvas = document.createElement('canvas'),
+  const userCanvas = document.createElement('canvas')
   const  userPointer = document.createElement('div'),
     randomColour = colorArray[Math.floor(Math.random()*7)];
-  /*userCanvas.setAttribute('id',`userCanvas-${user}`)
-  userCanvas.style.width = "1400px";
-  userCanvas.style.height = "800px"*/
+  userCanvas.setAttribute('id',`userCanvas-${user}`)
+  userCanvas.width = "1400";
+  userCanvas.height = "800"
   userPointer.setAttribute('id',`userPen-${user}`)
   userPointer.classList.add('cursor')
   userPointer.classList.add(randomColour)
-  //canvasHolder.appendChild(userCanvas)
+  canvasHolder.appendChild(userCanvas)
   penBox.appendChild(userPointer)
   penBox.childElementCount;
 }
-
 
 /*******************pendrawing***********************/
