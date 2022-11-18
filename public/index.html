@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Draw Together</title>
+  </head>
+  <body>
+    <!--<div class="cursor otherCursor"></div>-->
+    <div id="myCursor" class="cursor"></div>
+    
+    <div id="penBox"></div>
+
+      <div id="canvasHolder">
+        <div id="background"></div>
+        <canvas id="canvas" width="1400" height="800"></canvas>
+        <canvas id="canvas1" width="1400" height="800"></canvas>
+        <canvas id="canvas2" width="1400" height="800"></canvas>
+        <canvas id="canvas3" width="1400" height="800"></canvas>
+        <canvas id="canvas4" width="1400" height="800"></canvas>
+        <canvas id="canvas5" width="1400" height="800"></canvas>
+        <canvas id="canvas6" width="1400" height="800"></canvas>
+      </div>
+    <!-- Importing the socket javascript files so our web sockets can work -->
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="./script.js"></script>
+  </body>
+</html>

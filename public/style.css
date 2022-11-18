@@ -1,0 +1,71 @@
+
+body{
+    background-color: rgb(0, 0, 0);
+    /*background-image: url("https://media4.giphy.com/media/2tNvsKkc0qFdNhJmKk/giphy.gif?cid=ecf05e47bodynrrbn9goatbm1b2mmjqsoaxjt1cjmfazux42&rid=giphy.gif&ct=g");
+    background-size: cover;
+    background-repeat: none;*/
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+    align-items: center;
+    justify-content: center;
+    cursor: none;
+    overflow:hidden;
+}
+canvas{
+    position: absolute;
+    background-color: rgba(255, 255, 255, 0);
+    /*box-shadow: 2px 2px 2px 2px black;*/
+}
+
+#canvasHolder{
+    display: flex;
+    width: 1400px;
+    height: 800px;
+}
+
+#background{
+    width: 1400px;
+    height: 800px;
+    background-color: white;
+}
+
+.cursor{
+    position: absolute;
+    background-image: url("./pencil.png");
+    background-size: cover;
+    width: 100px;
+    height: 100px;
+}
+
+.hidden{
+    display: none;
+}
+
+.red{
+    filter: invert(33%) sepia(97%) saturate(7430%) hue-rotate(356deg) brightness(101%) contrast(123%);
+}
+
+.blue{
+    filter: invert(7%) sepia(100%) saturate(7389%) hue-rotate(248deg) brightness(112%) contrast(144%);
+}
+
+.yellow{
+    filter: invert(100%) sepia(35%) saturate(7496%) hue-rotate(0deg) brightness(107%) contrast(102%);
+}
+
+.green{
+    filter: invert(56%) sepia(87%) saturate(3401%) hue-rotate(85deg) brightness(135%) contrast(113%);
+}
+
+.pink{
+    filter: invert(87%) sepia(91%) saturate(1299%) hue-rotate(287deg) brightness(109%) contrast(102%);
+}
+
+.orange{
+    filter: invert(75%) sepia(48%) saturate(4780%) hue-rotate(1deg) brightness(104%) contrast(104%);
+}
+
+.purple{
+    filter: invert(15%) sepia(65%) saturate(6493%) hue-rotate(276deg) brightness(103%) contrast(94%);
+}
