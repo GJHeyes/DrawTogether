@@ -63,7 +63,6 @@ socket.on("pendrawing", function (userInfo){
   if(!document.getElementById(`userPen-${userInfo.userId}`)){
     addUser(userInfo.userId)
     const userPen = document.getElementById(`userPen-${localUser}`);
-    console.log(userPen)
     userPen.classList.add('hidden')
   }
   otherUserDrawing(userInfo)
