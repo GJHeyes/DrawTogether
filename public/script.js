@@ -2,14 +2,11 @@
 const socket = io(),
   form = document.querySelector("#message-form"),
   input = document.querySelector("#chat"),
-  //otherCursor = document.querySelector(".otherCursor"),
   myCursor = document.querySelector("#myCursor"),
   canvas = document.getElementById('canvas'),
-  //canvas2 = document.getElementById('canvas2'),
   penBox = document.getElementById('penBox')
   canvasHolder = document.getElementById("canvasHolder"),
   ctx = canvas.getContext('2d');
-  //ctxOtherUser = canvas2.getContext('2d');
 let penDown = false
 let draw = false;
 let localUser = ""
@@ -49,24 +46,11 @@ document.addEventListener('mousedown', event=>{
 })
 
 document.addEventListener('mouseup', event=>{
-  //const {x, y} = getCoords(event)
   penDown = false
-  /*if(draw = true){
-    ctx.moveTo(x, y)
-    ctx.beginPath()
-    ctx.lineTo(x,y)
-    ctx.stroke()
-    draw=false
-  }*/
 })
 
 socket.on("pendrawing", function (userInfo){
   if(!document.getElementById(`userPen-${userInfo.userId}`)){
-    //addUser(userInfo.userId)
-    //const userPen = document.getElementById(`userPen-${localUser}`);
-    //userPen.classList.add('hidden')
-    //const userCanvas = document.getElementById(`userCanvas-${localUser}`);
-    //userCanvas.classList.add('hidden')
     if(userInfo.userId !== localUser){
       addUser(userInfo.userId)
       userArray.push(userInfo.userId)
@@ -86,15 +70,8 @@ function otherUserDrawing(userInfo){
     const newCtx = newCanvas.getContext('2d')
     //const userCanvas = document.getElementById(`userCanvas-${userId}`);
     //const ctxNew = userCanvas.getContext('2d')
-    
-    // const canvas2 = document.getElementById('canvas2')
-    // const ctxOtherUser = canvas2.getContext('2d')
     userPen.setAttribute("style", `top: ${pageY+height}px; left: ${pageX+width}px`)
-
     if(penDown){
-      // ctxOtherUser.strokeStyle = '#A020F0'
-      // ctxOtherUser.lineTo(x,y)
-      // ctxOtherUser.stroke()
       // ctxNew.strokeStyle = '#A020F0'
       // ctxNew.lineTo(x,y)
       // ctxNew.stroke()
@@ -102,7 +79,6 @@ function otherUserDrawing(userInfo){
       newCtx.lineTo(x,y)
       newCtx.stroke()
     }else if(!penDown){
-      //ctxOtherUser.moveTo(x, y)
       //ctxNew.moveTo(x, y)
       newCtx.moveTo(x, y)
     }
@@ -112,7 +88,6 @@ function otherUserDrawing(userInfo){
 socket.on("user", function (user){
   if(localUser === ""){
     localUser = user
-    //addUser(user)
   }
 })
 
