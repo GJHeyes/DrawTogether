@@ -1,4 +1,4 @@
 
 button to save
-button to reset --- do you agree?
+button to reset --- do you agree? ---location.reload();
 zoom in and out button
