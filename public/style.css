@@ -115,10 +115,10 @@ button{
     position:absolute;
     font-size: 12vh;
     text-shadow:
-    -5px 0px 0px rgb(255, 255, 255),
-    5px 0px 0px rgb(255, 255, 255),
-    0px -5px 0px rgb(255, 255, 255),
-    0px 5px 0px rgb(255, 255, 255);
+    -0.5vh 0px 0px rgb(255, 255, 255),
+    .5vh 0px 0px rgb(255, 255, 255),
+    0px -.5vh 0px rgb(255, 255, 255),
+    0px .5vh 0px rgb(255, 255, 255);
     -webkit-user-select: none; /* Safari */
     -ms-user-select: none; /* IE 10 and IE 11 */
     user-select: none; /* Standard syntax */
