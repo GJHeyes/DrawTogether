@@ -8,3 +8,5 @@ zoom in and out button
 
 changes last line colour?
 --- when mouse down do a dot of white
+
+change to a finger when over a button
