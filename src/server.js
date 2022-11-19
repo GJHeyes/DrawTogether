@@ -9,7 +9,6 @@ app.use("/", express.static("public"));
 
 // Using the "on event" method to run our controller function on connection
 io.on("connection", (socket) => {
-  console.log(socket.id)
   io.emit("user",socket.id)
   socket.on("pendrawing", (userInfo)=>{
     io.emit("pendrawing", userInfo)

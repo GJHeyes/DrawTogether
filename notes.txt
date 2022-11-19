@@ -2,5 +2,3 @@
 button to save
 button to reset --- do you agree?
 zoom in and out button
-
-add pen enlarger

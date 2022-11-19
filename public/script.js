@@ -34,7 +34,6 @@ document.addEventListener('mousemove', (e)=>{
     myCursor.classList.add("pipet"),myCursor.style.width = styleWidth
   }
   if(!document.elementsFromPoint(e.x, e.y).includes(colourBox) && myCursor.classList.contains("pipet")){
-    console.log('hello')
     myCursor.classList.remove("pipet"),myCursor.style.width = styleWidth
   }
 })
@@ -64,7 +63,6 @@ document.addEventListener( 'click',(e)=>{
       styleHeight -= 10
       styleWidth -= 10
       ctx.lineWidth-=1;
-      console.log(styleHeight)
       myCursor.style.width = styleWidth - 10 + "px"
       myCursor.style.height = styleHeight - 10 + "px"
     }
@@ -131,7 +129,6 @@ function otherUserDrawing(userInfo){
     const userCanvas = document.getElementById(`userCanvas-${userId}`);
     const ctxNew = userCanvas.getContext('2d')
 
-    console.log(penClassList[0])
     userPen.classList = `${penClassList[0]} ${penClassList[1]} ${penClassList[2]}`
     ctxNew.lineWidth = lineWidth
     if(userPen .classList.contains("pipet")){
@@ -140,7 +137,6 @@ function otherUserDrawing(userInfo){
       userPen.setAttribute("style", `width: ${styleWidth}px; height: ${styleHeight}px; top: ${pageY+height}px; left: ${pageX+width}px`)
     }
     if(mouseDown){
-      console.log('Hello')
       ctxNew.moveTo(x, y)
       ctxNew.beginPath()
     }
@@ -166,7 +162,6 @@ socket.on("disconnected", function(user){
     penBox.removeChild(userPen)
     userArray = userArray.filter((i) => i !== user)
   }catch(error){
-    console.log("pen not yet created")
   }
 })
 
