@@ -54,7 +54,7 @@ document.addEventListener( 'click',(e)=>{
   if(document.elementsFromPoint(e.x, e.y).includes(pink)){ctx.strokeStyle = '#FFC0CB',myCursor.classList = ('cursor pink pipet')}
   if(document.elementsFromPoint(e.x, e.y).includes(orange)){ctx.strokeStyle = '#FFA500',myCursor.classList = ('cursor orange pipet')}
   if(document.elementsFromPoint(e.x, e.y).includes(purple)){ctx.strokeStyle = '#A020F0',myCursor.classList = ('cursor purple pipet')}
-  if(document.elementsFromPoint(e.x, e.y).includes(black)){ctx.strokeStyle = '#000000',myCursor.classList = ('cursor default pipet')}
+  if(document.elementsFromPoint(e.x, e.y).includes(black)){ctx.strokeStyle = '#000000',myCursor.classList = ('cursor black pipet')}
   if(document.elementsFromPoint(e.x, e.y).includes(lightBlue)){ctx.strokeStyle = '#72bcd4',myCursor.classList = ('cursor lightBlue pipet')}
   if(document.elementsFromPoint(e.x, e.y).includes(header)){header.classList = myCursor.classList[1]}
   if(document.elementsFromPoint(e.x, e.y).includes(addPenWidth)){
@@ -137,7 +137,9 @@ function otherUserDrawing(userInfo){
     const userPen = document.getElementById(`userPen-${userId}`);
     const userCanvas = document.getElementById(`userCanvas-${userId}`);
     const ctxNew = userCanvas.getContext('2d')
-    header.classList = headerClassList[0]
+    if(headerClassList[0] !=="default"){
+      header.classList = headerClassList[0]
+    }
     userPen.classList = `${penClassList[0]} ${penClassList[1]} ${penClassList[2]}`
     ctxNew.lineWidth = lineWidth
     if(userPen .classList.contains("pipet")){
