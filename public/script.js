@@ -47,15 +47,15 @@ document.addEventListener('mousemove', (e)=>{
 
 document.addEventListener( 'click',(e)=>{
   //elem = document.elementsFromPoint(e.x, e.y);
-  if(document.elementsFromPoint(e.x, e.y).includes(red)){ctx.strokeStyle = '#FF3131',myCursor.classList = ('cursor red pipet')}
-  if(document.elementsFromPoint(e.x, e.y).includes(blue)){ctx.strokeStyle = '#0000FF',myCursor.classList = ('cursor blue pipet ')}
+  if(document.elementsFromPoint(e.x, e.y).includes(red)){ctx.strokeStyle = '#FF355E',myCursor.classList = ('cursor red pipet')}
+  if(document.elementsFromPoint(e.x, e.y).includes(blue)){ctx.strokeStyle = '#0047AB',myCursor.classList = ('cursor blue pipet ')}
   if(document.elementsFromPoint(e.x, e.y).includes(yellow)){ctx.strokeStyle = '#FFFF00',myCursor.classList = ('cursor yellow pipet ')}
-  if(document.elementsFromPoint(e.x, e.y).includes(green)){ctx.strokeStyle = '#00FF00',myCursor.classList = ('cursor green pipet')}
+  if(document.elementsFromPoint(e.x, e.y).includes(green)){ctx.strokeStyle = '#50C878',myCursor.classList = ('cursor green pipet')}
   if(document.elementsFromPoint(e.x, e.y).includes(pink)){ctx.strokeStyle = '#FFC0CB',myCursor.classList = ('cursor pink pipet')}
   if(document.elementsFromPoint(e.x, e.y).includes(orange)){ctx.strokeStyle = '#FFA500',myCursor.classList = ('cursor orange pipet')}
   if(document.elementsFromPoint(e.x, e.y).includes(purple)){ctx.strokeStyle = '#A020F0',myCursor.classList = ('cursor purple pipet')}
   if(document.elementsFromPoint(e.x, e.y).includes(black)){ctx.strokeStyle = '#000000',myCursor.classList = ('cursor black pipet')}
-  if(document.elementsFromPoint(e.x, e.y).includes(lightBlue)){ctx.strokeStyle = '#72bcd4',myCursor.classList = ('cursor lightBlue pipet')}
+  if(document.elementsFromPoint(e.x, e.y).includes(lightBlue)){ctx.strokeStyle = '#72BCD4',myCursor.classList = ('cursor lightBlue pipet')}
   if(document.elementsFromPoint(e.x, e.y).includes(header)){header.classList = myCursor.classList[1]}
   if(document.elementsFromPoint(e.x, e.y).includes(addPenWidth)){
 

@@ -124,10 +124,9 @@ button{
 }
 
 #footer{
-    left: 94vw;
-    top: 95vh;
     font-family: 'Galaxion', sans-serif;
-    position:fixed;
+    position:absolute;
+    align-self: flex-end;
     font-size: 2vh;
     text-shadow:
     -0.1vh 0px 0px rgb(255, 255, 255),
@@ -148,11 +147,11 @@ button{
 }
 
 .red{
-    filter: invert(38%) sepia(46%) saturate(6273%) hue-rotate(340deg) brightness(97%) contrast(109%);;
+    filter: invert(32%) sepia(71%) saturate(3779%) hue-rotate(332deg) brightness(111%) contrast(102%);
 }
 
 .blue{
-    filter: invert(7%) sepia(100%) saturate(7389%) hue-rotate(248deg) brightness(112%) contrast(144%);
+    filter: invert(16%) sepia(98%) saturate(2361%) hue-rotate(207deg) brightness(95%) contrast(103%);
 }
 
 .yellow{
@@ -160,7 +159,7 @@ button{
 }
 
 .green{
-    filter: invert(56%) sepia(87%) saturate(3401%) hue-rotate(85deg) brightness(135%) contrast(113%);
+    filter: invert(67%) sepia(65%) saturate(377%) hue-rotate(87deg) brightness(90%) contrast(86%);
 }
 
 .pink{
