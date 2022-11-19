@@ -44,9 +44,13 @@ canvas{
     height: 50px;
 }
 
-.cursorChange{
+.pipet{
     z-index: 20;
-    background-image: url("./pointer.png") !important;
+    background-image: url("./dropper.png") !important;
+}
+
+.white.pipet{
+    background-image: url("./dropperWhite.png") !important;
 }
 
 .eraser{
@@ -116,4 +120,8 @@ button{
 #white{
     border: 2px white solid!important;
     filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(329deg) brightness(103%) contrast(102%);
+}
+
+.whitePipet{
+    background-image: url("./dropperWhite.png"); 
 }
