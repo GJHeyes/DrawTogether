@@ -126,6 +126,22 @@ button{
     user-select: none; /* Standard syntax */
 }
 
+#footer{
+    left: 95vw;
+    top: 95vh;
+    font-family: 'Galaxion', sans-serif;
+    position:fixed;
+    font-size: 2vh;
+    text-shadow:
+    -0.1vh 0px 0px rgb(255, 255, 255),
+    .1vh 0px 0px rgb(255, 255, 255),
+    0px -.1vh 0px rgb(255, 255, 255),
+    0px .1vh 0px rgb(255, 255, 255);
+    -webkit-user-select: none; /* Safari */
+    -ms-user-select: none; /* IE 10 and IE 11 */
+    user-select: none; /* Standard syntax */
+}
+
 #removePenWidth{
     padding-bottom: 7px;
 }
