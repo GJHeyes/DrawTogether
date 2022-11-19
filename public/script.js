@@ -9,6 +9,15 @@ const socket = io(),
   canvasHolder = document.getElementById("canvasHolder"),
   addPenWidth = document.getElementById('addPenWidth'),
   removePenWidth = document.getElementById('removePenWidth'),
+  red = document.getElementById('red'),
+  blue = document.getElementById('blue'),
+  yellow = document.getElementById('yellow'),
+  green = document.getElementById('green'),
+  pink = document.getElementById('pink'),
+  orange = document.getElementById('orange'),
+  purple = document.getElementById('purple'),
+  black = document.getElementById('black'),
+  lightBlue = document.getElementById('lightBlue'),
   ctx = canvas.getContext('2d');
   
 let penDown = false
@@ -20,26 +29,6 @@ let styleWidth = 50
 let styleHeight = 50
 let previousColor = "black"
 
-/********************buttons*******************/
-const red = document.getElementById('red')
-const blue = document.getElementById('blue')
-const yellow = document.getElementById('yellow')
-const green = document.getElementById('green')
-const pink = document.getElementById('pink')
-const orange = document.getElementById('orange')
-const purple = document.getElementById('purple')
-const black = document.getElementById('black')
-const lightBlue = document.getElementById('lightBlue')
-
-red.addEventListener('click', ()=>{ctx.strokeStyle = '#FF0000',myCursor.classList = ('cursor red pipet')} )
-blue.addEventListener('click', ()=>{ctx.strokeStyle = '#0000FF',myCursor.classList = ('cursor blue pipet ')})
-yellow.addEventListener('click', ()=>{ctx.strokeStyle = '#FFFF00',myCursor.classList = ('cursor yellow pipet ')})
-green.addEventListener('click', ()=>{ctx.strokeStyle = '#00FF00',myCursor.classList = ('cursor green pipet')})
-pink.addEventListener('click', ()=>{ctx.strokeStyle = '#FFC0CB',myCursor.classList = ('cursor pink pipet')})
-orange.addEventListener('click', ()=>{ctx.strokeStyle = '#FFA500',myCursor.classList = ('cursor orange pipet')})
-purple.addEventListener('click', ()=>{ctx.strokeStyle = '#A020F0',myCursor.classList = ('cursor purple pipet')})
-black.addEventListener('click', ()=>{ctx.strokeStyle = '#000000',myCursor.classList = ('cursor default pipet')})
-lightBlue.addEventListener('click', ()=>{ctx.strokeStyle = '#72bcd4',myCursor.classList = ('cursor lightBlue pipet')})
 document.addEventListener('mousemove', (e)=>{
   if(document.elementsFromPoint(e.x, e.y).includes(colourBox) && !myCursor.classList.contains("pipet")){
     myCursor.classList.add("pipet"),myCursor.style.width = styleWidth
@@ -49,9 +38,18 @@ document.addEventListener('mousemove', (e)=>{
     myCursor.classList.remove("pipet"),myCursor.style.width = styleWidth
   }
 })
+
 document.addEventListener( 'click',(e)=>{
-  elem = document.elementsFromPoint(e.x, e.y);
-  console.log(elem)
+  //elem = document.elementsFromPoint(e.x, e.y);
+  if(document.elementsFromPoint(e.x, e.y).includes(red)){ctx.strokeStyle = '#FF0000',myCursor.classList = ('cursor red pipet')}
+  if(document.elementsFromPoint(e.x, e.y).includes(blue)){ctx.strokeStyle = '#0000FF',myCursor.classList = ('cursor blue pipet ')}
+  if(document.elementsFromPoint(e.x, e.y).includes(yellow)){ctx.strokeStyle = '#FFFF00',myCursor.classList = ('cursor yellow pipet ')}
+  if(document.elementsFromPoint(e.x, e.y).includes(green)){ctx.strokeStyle = '#00FF00',myCursor.classList = ('cursor green pipet')}
+  if(document.elementsFromPoint(e.x, e.y).includes(pink)){ctx.strokeStyle = '#FFC0CB',myCursor.classList = ('cursor pink pipet')}
+  if(document.elementsFromPoint(e.x, e.y).includes(orange)){ctx.strokeStyle = '#FFA500',myCursor.classList = ('cursor orange pipet')}
+  if(document.elementsFromPoint(e.x, e.y).includes(purple)){ctx.strokeStyle = '#A020F0',myCursor.classList = ('cursor purple pipet')}
+  if(document.elementsFromPoint(e.x, e.y).includes(black)){ctx.strokeStyle = '#000000',myCursor.classList = ('cursor default pipet')}
+  if(document.elementsFromPoint(e.x, e.y).includes(lightBlue)){ctx.strokeStyle = '#72bcd4',myCursor.classList = ('cursor lightBlue pipet')}
   if(document.elementsFromPoint(e.x, e.y).includes(addPenWidth)){
     if(parseInt(myCursor.style.width)<= 200){
       styleHeight += 10
@@ -59,8 +57,6 @@ document.addEventListener( 'click',(e)=>{
       ctx.lineWidth+=1;
       myCursor.style.width = styleWidth + 10 + "px"
       myCursor.style.height = styleWidth + 10 + "px"
-    }else{
-      console.log("max width reached")
     }
   }
   if(document.elementsFromPoint(e.x, e.y).includes(removePenWidth)){
@@ -71,41 +67,9 @@ document.addEventListener( 'click',(e)=>{
       console.log(styleHeight)
       myCursor.style.width = styleWidth - 10 + "px"
       myCursor.style.height = styleHeight - 10 + "px"
-    }else{
-      console.log("min width reached")
     }
   }
 })
-
-/*document.addEventListener('click', (e)=>{
-  if(document.elementsFromPoint(e.x, e.y).includes()){
-
-  }
-})*/
-removePenWidth.addEventListener('click', ()=>{
-  if(parseInt(myCursor.style.width) > 50){
-    styleHeight -= 10
-    styleWidth -= 10
-    ctx.lineWidth-=1;
-    console.log(styleHeight)
-    myCursor.style.width = styleWidth - 10 + "px"
-    myCursor.style.height = styleHeight - 10 + "px"
-  }else{
-    console.log("min width reached")
-  }
-  
-})
-/********************buttons*******************/
-
-/*******************pendrawing***********************/
-
-ctx.strokeStyle = '#000000'
-
-function getCoords(event){
-  const {pageX,pageY} = event
-  const {offsetLeft,offsetTop} = canvas 
-  return {x: pageX - offsetLeft, y: pageY-offsetTop}
-}
 
 document.addEventListener('mousemove', event=>{
   const {pageX,pageY} = event
@@ -115,7 +79,6 @@ document.addEventListener('mousemove', event=>{
   }else{
     myCursor.setAttribute("style", `width: ${myCursor.style.width}; height: ${myCursor.style.height}; top: ${pageY}px; left: ${pageX}px`)
   }
-  
   if(penDown){
     ctx.lineTo(x,y)
     ctx.stroke()
@@ -127,6 +90,10 @@ document.addEventListener('mousemove', event=>{
   }
 }) 
 
+document.addEventListener('mouseup', event=>{
+  penDown = false
+})
+
 document.addEventListener('mousedown', event=>{
   const {x, y} = getCoords(event)
   penDown = true
@@ -136,22 +103,26 @@ document.addEventListener('mousedown', event=>{
   
 })
 
-document.addEventListener('mouseup', event=>{
-  penDown = false
-})
+function addUser(user){
+  const userCanvas = document.createElement('canvas')
+  const  userPointer = document.createElement('div');
+  userCanvas.setAttribute('id',`userCanvas-${user}`)
+  userCanvas.width = "1180";
+  userCanvas.height = "620"
+  userPointer.setAttribute('id',`userPen-${user}`)
+  userPointer.classList.add('cursor')
+  canvasHolder.appendChild(userCanvas)
+  penBox.appendChild(userPointer)
+  penBox.childElementCount;
+}
 
-socket.on("pendrawing", function (userInfo){
-  if(!document.getElementById(`userPen-${userInfo.userId}`)){
-    if(userInfo.userId !== localUser){
-      addUser(userInfo.userId)
-      userArray.push(userInfo.userId)
-    }
-  }
-  otherUserDrawing(userInfo)
-})
+function getCoords(event){
+  const {pageX,pageY} = event
+  const {offsetLeft,offsetTop} = canvas 
+  return {x: pageX - offsetLeft, y: pageY-offsetTop}
+}
 
 function otherUserDrawing(userInfo){
-  
   const {x, y , userId, penDown, otherWidth, otherHeight,pageX,pageY,ctxColour,mouseDown, penClassList ,lineWidth, styleWidth, styleHeight} = userInfo
   if(userId !== localUser){
     const width = ((window.innerWidth-1180)/2) - ((otherWidth-1180)/2);
@@ -182,13 +153,6 @@ function otherUserDrawing(userInfo){
     }
   }
 }
-//const userNum = userArray.indexOf(userId)
-// const newCanvas = document.getElementById(`canvas${userNum}`);
-// const newCtx = newCanvas.getContext('2d')
-// newCtx.strokeStyle = '#A020F0'
-// newCtx.lineTo(x,y)
-// newCtx.stroke()
-//newCtx.moveTo(x, y)
 
 socket.on("user", function (user){
   if(localUser === ""){
@@ -206,21 +170,17 @@ socket.on("disconnected", function(user){
   }
 })
 
+socket.on("pendrawing", function (userInfo){
+  if(!document.getElementById(`userPen-${userInfo.userId}`)){
+    if(userInfo.userId !== localUser){
+      addUser(userInfo.userId)
+      userArray.push(userInfo.userId)
+    }
+  }
+  otherUserDrawing(userInfo)
+})
 
-function addUser(user){
-  const userCanvas = document.createElement('canvas')
-  const  userPointer = document.createElement('div');
-   // randomColour = colorArray[Math.floor(Math.random()*7)];
-  userCanvas.setAttribute('id',`userCanvas-${user}`)
-  userCanvas.width = "1180";
-  userCanvas.height = "620"
-  userPointer.setAttribute('id',`userPen-${user}`)
-  userPointer.classList.add('cursor')
-  //userPointer.setAttribute("style", `width: ${50}px, height: 50px`)
-  //userPointer.classList.add(randomColour)
-  canvasHolder.appendChild(userCanvas)
-  penBox.appendChild(userPointer)
-  penBox.childElementCount;
-}
+
+
 
 /*******************pendrawing***********************/
