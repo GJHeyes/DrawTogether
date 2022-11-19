@@ -52,8 +52,8 @@ canvas{
 button{ 
     border: 2px rgb(255, 255, 255) solid!important;
     cursor: none;
-    width: 40px;
-    height: 40px;
+    width: 80px;
+    height: 80px;
     margin: 5px;
     background-color: black;
     align-items: center;
@@ -61,7 +61,7 @@ button{
 
 #colourBox{
     z-index: 19;
-    top: calc(50% - 225px);
+    top: calc(50% - 405px);
     left: calc((100vw - 1180px)/4);
     position: fixed;
     display: flex;
@@ -72,7 +72,7 @@ button{
 
 #sizeBox{
     z-index: 19;
-    top: calc(50% - 50px);
+    top: calc(50% - 90px);
     right: calc((100vw - 1180px)/4);
     position: fixed;
     display: flex;
@@ -85,17 +85,19 @@ button{
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 2px black solid!important;
+    border: 2px solid!important;
     font-size: 40px;
     text-align: center;
 }
 
 #addPenWidth{
     background-color: #b0e400;
+    border-color: #7f9736 !important;
 }
 
 #removePenWidth{
     background-color: #ff0000;
+    border-color: #a61022 !important;
 }
 
 
