@@ -11,6 +11,7 @@ body{
     cursor: none;
     overflow:hidden;
     justify-content: center;
+    margin:0 !important;
 }
 canvas{
     z-index: 18;
@@ -39,6 +40,8 @@ canvas{
     height: 620px;
     background-color: white;
     border: 2px black solid!important;
+    margin-left: 5px;
+    margin-right: 5px;
 }
 
 .cursor{
@@ -75,7 +78,7 @@ button{
 #colourBox{
     z-index: 19;
     top: calc(50% - 315px);
-    left: calc((100vw - 1180px)/4);
+    left: calc(((100vw - 1180px)/2) - 100px);
     position: fixed;
     display: flex;
     flex-direction: column;
@@ -86,7 +89,7 @@ button{
 #sizeBox{
     z-index: 19;
     top: calc(50% - 70px);
-    right: calc((100vw - 1180px)/4);
+    right: calc(((100vw - 1180px)/2) - 115px);
     position: fixed;
     display: flex;
     flex-direction: column;
@@ -95,10 +98,6 @@ button{
 }
 
 .sizeButton{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: 2px solid!important;
     font-size: 40px;
     text-align: center;
 }
