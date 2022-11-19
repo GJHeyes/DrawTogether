@@ -33,7 +33,7 @@ pink.addEventListener('click', ()=>{ctx.strokeStyle = '#FFC0CB',myCursor.classLi
 orange.addEventListener('click', ()=>{ctx.strokeStyle = '#FFA500',myCursor.classList = ('cursor orange'), ctx.lineWidth=1})
 purple.addEventListener('click', ()=>{ctx.strokeStyle = '#A020F0',myCursor.classList = ('cursor purple'), ctx.lineWidth=1})
 black.addEventListener('click', ()=>{ctx.strokeStyle = '#000000',myCursor.classList = ('cursor'), ctx.lineWidth=1})
-white.addEventListener('click', ()=>{ctx.strokeStyle = '#FFFFFF',myCursor.classList = ('cursor white'), ctx.lineWidth=1})
+white.addEventListener('click', ()=>{ctx.strokeStyle = '#FFFFFF',myCursor.classList = ('cursor white'), ctx.lineWidth=2})
 colourBox.addEventListener('mouseover', ()=>{myCursor.classList.add("cursorChange")}) 
 colourBox.addEventListener('mouseout', ()=>{myCursor.classList.remove("cursorChange")}) 
 /********************buttons*******************/
