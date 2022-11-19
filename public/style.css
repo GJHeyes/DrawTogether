@@ -89,7 +89,7 @@ button{
 #sizeBox{
     z-index: 19;
     top: calc(50% - 70px);
-    right: calc(((100vw - 1180px)/2) - 115px);
+    right: calc(((100vw - 1180px)/2) - 100px);
     position: fixed;
     display: flex;
     flex-direction: column;
