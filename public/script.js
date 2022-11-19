@@ -13,6 +13,7 @@ let localUser = ""
 const colorArray = ["red","blue","yellow","green","pink","orange","purple"]
 let userArray = []
 let mouseDown = false;
+
 /********************buttons*******************/
 const red = document.getElementById('red')
 const blue = document.getElementById('blue')
@@ -22,15 +23,17 @@ const pink = document.getElementById('pink')
 const orange = document.getElementById('orange')
 const purple = document.getElementById('purple')
 const black = document.getElementById('black')
+const white = document.getElementById('white')
 
-red.addEventListener('click', ()=>{ctx.strokeStyle = '#FF0000',myCursor.classList = ('cursor red')} )
-blue.addEventListener('click', ()=>{ctx.strokeStyle = '#0000FF',myCursor.classList = ('cursor blue')})
-yellow.addEventListener('click', ()=>{ctx.strokeStyle = '#FFFF00',myCursor.classList = ('cursor yellow')})
-green.addEventListener('click', ()=>{ctx.strokeStyle = '#00FF00',myCursor.classList = ('cursor green')})
-pink.addEventListener('click', ()=>{ctx.strokeStyle = '#FFC0CB',myCursor.classList = ('cursor pink')})
-orange.addEventListener('click', ()=>{ctx.strokeStyle = '#FFA500',myCursor.classList = ('cursor orange')})
-purple.addEventListener('click', ()=>{ctx.strokeStyle = '#A020F0',myCursor.classList = ('cursor purple')})
-black.addEventListener('click', ()=>{ctx.strokeStyle = '#000000',myCursor.classList = ('cursor')})
+red.addEventListener('click', ()=>{ctx.strokeStyle = '#FF0000',myCursor.classList = ('cursor red'), ctx.lineWidth=1} )
+blue.addEventListener('click', ()=>{ctx.strokeStyle = '#0000FF',myCursor.classList = ('cursor blue'), ctx.lineWidth=1})
+yellow.addEventListener('click', ()=>{ctx.strokeStyle = '#FFFF00',myCursor.classList = ('cursor yellow'), ctx.lineWidth=1})
+green.addEventListener('click', ()=>{ctx.strokeStyle = '#00FF00',myCursor.classList = ('cursor green'), ctx.lineWidth=1})
+pink.addEventListener('click', ()=>{ctx.strokeStyle = '#FFC0CB',myCursor.classList = ('cursor pink'), ctx.lineWidth=1})
+orange.addEventListener('click', ()=>{ctx.strokeStyle = '#FFA500',myCursor.classList = ('cursor orange'), ctx.lineWidth=1})
+purple.addEventListener('click', ()=>{ctx.strokeStyle = '#A020F0',myCursor.classList = ('cursor purple'), ctx.lineWidth=1})
+black.addEventListener('click', ()=>{ctx.strokeStyle = '#000000',myCursor.classList = ('cursor'), ctx.lineWidth=1})
+white.addEventListener('click', ()=>{ctx.strokeStyle = '#FFFFFF',myCursor.classList = ('cursor eraser'), ctx.lineWidth=50})
 colourBox.addEventListener('mouseover', ()=>{myCursor.classList.add("cursorChange")}) 
 colourBox.addEventListener('mouseout', ()=>{myCursor.classList.remove("cursorChange")}) 
 /********************buttons*******************/
@@ -55,7 +58,7 @@ document.addEventListener('mousemove', event=>{
     ctx.stroke()
   }
   socket.emit("pendrawing", {x: x, y: y, userId: localUser, penDown: penDown, otherWidth : window.innerWidth, otherHeight:window.innerHeight,
-  pageX:pageX, pageY:pageY, ctxColour: ctx.strokeStyle, mouseDown: mouseDown, penColor: myCursor.classList[1]} )
+  pageX:pageX, pageY:pageY, ctxColour: ctx.strokeStyle, mouseDown: mouseDown, penColor: myCursor.classList[1], lineWidth: ctx.lineWidth} )
   if(mouseDown){
     mouseDown = false;
   }
@@ -86,8 +89,7 @@ socket.on("pendrawing", function (userInfo){
 
 function otherUserDrawing(userInfo){
   
-  const {x, y , userId, penDown, otherWidth, otherHeight,pageX,pageY,ctxColour,mouseDown, penColor} = userInfo
-  console.log(penColor)
+  const {x, y , userId, penDown, otherWidth, otherHeight,pageX,pageY,ctxColour,mouseDown, penColor,lineWidth} = userInfo
   if(userId !== localUser){
     const width = ((window.innerWidth-1180)/2) - ((otherWidth-1180)/2);
     const height = ((window.innerHeight-620)/2) - ((otherHeight-620)/2); 
@@ -95,6 +97,7 @@ function otherUserDrawing(userInfo){
     const userCanvas = document.getElementById(`userCanvas-${userId}`);
     const ctxNew = userCanvas.getContext('2d')
     userPen.classList = `cursor ${penColor}`
+    ctxNew.lineWidth = lineWidth
     userPen.setAttribute("style", `top: ${pageY+height}px; left: ${pageX+width}px`)
     if(mouseDown){
       console.log('Hello')

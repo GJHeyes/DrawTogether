@@ -32,6 +32,7 @@ canvas{
 }
 
 .cursor{
+    z-index: 20;
     position: absolute;
     background-image: url("./pencil.png");
     background-size: cover;
@@ -40,8 +41,14 @@ canvas{
 }
 
 .cursorChange{
+    z-index: 20;
     opacity: 100%;
     background-image: url("./pointer.png");
+}
+
+.eraser{
+    z-index: 20;
+    background-image: url("./eraser.png");
 }
 
 button{ 
@@ -57,7 +64,7 @@ button{
 #colourBox{
     z-index: 200;
     cursor: none;
-    top: calc(50% - 200px);
+    top: calc(50% - 225px);
     left: calc((100vw - 1180px)/4);
     position: fixed;
     display: flex;
@@ -79,7 +86,7 @@ button{
 }
 
 .yellow{
-    filter: invert(100%) sepia(35%) saturate(7496%) hue-rotate(0deg) brightness(107%) contrast(102%);
+    filter: invert(80%) sepia(67%) saturate(1131%) hue-rotate(357deg) brightness(100%) contrast(106%);
 }
 
 .green{
@@ -96,4 +103,12 @@ button{
 
 .purple{
     filter: invert(15%) sepia(65%) saturate(6493%) hue-rotate(276deg) brightness(103%) contrast(94%);
+}
+
+.white{
+    filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(329deg) brightness(103%) contrast(102%);
+}
+
+#white{
+    border: 2px white solid!important;
 }
