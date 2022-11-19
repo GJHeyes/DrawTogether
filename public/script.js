@@ -9,6 +9,7 @@ const socket = io(),
   canvasHolder = document.getElementById("canvasHolder"),
   addPenWidth = document.getElementById('addPenWidth'),
   removePenWidth = document.getElementById('removePenWidth'),
+  header = document.getElementById('header')
   red = document.getElementById('red'),
   blue = document.getElementById('blue'),
   yellow = document.getElementById('yellow'),
@@ -36,11 +37,17 @@ document.addEventListener('mousemove', (e)=>{
   if(!document.elementsFromPoint(e.x, e.y).includes(colourBox) && myCursor.classList.contains("pipet")){
     myCursor.classList.remove("pipet"),myCursor.style.width = styleWidth
   }
+  if(document.elementsFromPoint(e.x, e.y).includes(header) && !myCursor.classList.contains("paintCan")){
+    myCursor.classList.add("paintCan"),myCursor.style.width = styleWidth
+  }
+  if(!document.elementsFromPoint(e.x, e.y).includes(header) && myCursor.classList.contains("paintCan")){
+    myCursor.classList.remove("paintCan"),myCursor.style.width = styleWidth
+  }
 })
 
 document.addEventListener( 'click',(e)=>{
   //elem = document.elementsFromPoint(e.x, e.y);
-  if(document.elementsFromPoint(e.x, e.y).includes(red)){ctx.strokeStyle = '#FF0000',myCursor.classList = ('cursor red pipet')}
+  if(document.elementsFromPoint(e.x, e.y).includes(red)){ctx.strokeStyle = '#FF3131',myCursor.classList = ('cursor red pipet')}
   if(document.elementsFromPoint(e.x, e.y).includes(blue)){ctx.strokeStyle = '#0000FF',myCursor.classList = ('cursor blue pipet ')}
   if(document.elementsFromPoint(e.x, e.y).includes(yellow)){ctx.strokeStyle = '#FFFF00',myCursor.classList = ('cursor yellow pipet ')}
   if(document.elementsFromPoint(e.x, e.y).includes(green)){ctx.strokeStyle = '#00FF00',myCursor.classList = ('cursor green pipet')}
@@ -49,7 +56,9 @@ document.addEventListener( 'click',(e)=>{
   if(document.elementsFromPoint(e.x, e.y).includes(purple)){ctx.strokeStyle = '#A020F0',myCursor.classList = ('cursor purple pipet')}
   if(document.elementsFromPoint(e.x, e.y).includes(black)){ctx.strokeStyle = '#000000',myCursor.classList = ('cursor default pipet')}
   if(document.elementsFromPoint(e.x, e.y).includes(lightBlue)){ctx.strokeStyle = '#72bcd4',myCursor.classList = ('cursor lightBlue pipet')}
+  if(document.elementsFromPoint(e.x, e.y).includes(header)){header.classList = myCursor.classList[1]}
   if(document.elementsFromPoint(e.x, e.y).includes(addPenWidth)){
+
     if(parseInt(myCursor.style.width)<= 200){
       styleHeight += 10
       styleWidth += 10
@@ -72,7 +81,7 @@ document.addEventListener( 'click',(e)=>{
 document.addEventListener('mousemove', event=>{
   const {pageX,pageY} = event
   const {x, y} = getCoords(event)
-  if(myCursor .classList.contains("pipet")){
+  if(myCursor.classList.contains("pipet") || myCursor .classList.contains("paintCan")){
     myCursor.setAttribute("style", `width: ${styleWidth}px; height: ${styleHeight}px;top: ${pageY - styleHeight}px; left: ${pageX}px`)
   }else{
     myCursor.setAttribute("style", `width: ${myCursor.style.width}; height: ${myCursor.style.height}; top: ${pageY}px; left: ${pageX}px`)
