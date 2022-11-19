@@ -1,12 +1,6 @@
-1 usert 1 brush
-
-assign brush cursor though id = user id
 
 button to save
 button to reset --- do you agree?
 zoom in and out button
 
-changes last line colour?
---- when mouse down do a dot of white
-
-change to a finger when over a button
+add pen enlarger
