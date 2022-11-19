@@ -13,7 +13,7 @@ body{
     justify-content: center;
 }
 canvas{
-    z-index: 19;
+    z-index: 18;
     position: absolute;
     background-color: rgba(255, 255, 255, 0);
     /*box-shadow: 2px 2px 2px 2px black;*/
@@ -67,6 +67,9 @@ button{
     margin: 5px;
     background-color: black;
     align-items: center;
+    -webkit-user-select: none; /* Safari */
+    -ms-user-select: none; /* IE 10 and IE 11 */
+    user-select: none; /* Standard syntax */
 }
 
 #colourBox{
