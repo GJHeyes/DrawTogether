@@ -111,9 +111,13 @@ function mouseMoving(event){
 
 document.addEventListener('mouseup', ()=>{penDown = false})
 
-document.addEventListener('touchstart', ()=>{penDown = false})
+document.addEventListener('touchend', ()=>{penDown = false})
 
 document.addEventListener('mousedown', event=>{
+  drawStart(event)
+})
+
+document.addEventListener('touchstart', event=>{
   drawStart(event)
 })
 
