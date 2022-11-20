@@ -13,9 +13,13 @@ io.on("connection", (socket) => {
   socket.on("pendrawing", (userInfo)=>{
     io.emit("pendrawing", userInfo)
   })
+  socket.on("penClick", (penInfo)=>{
+    io.emit("penClick", penInfo)
+  })
   socket.on("disconnect", () => {
     io.emit("disconnected", socket.id)
   });
+  
 });
 
 
