@@ -216,9 +216,12 @@ function zoomOutMobile() {
   if(window.innerWidth<= 640 && window.innerHeight>=640 && viewport){
     viewport.content = "initial-scale=0.1";    
   }
-  else if(window.innerWidth<= 1280 && viewport){
+  else if(window.innerWidth>= 640 && viewport){
       viewport.content = "initial-scale=0.5";
   }
+  else if(window.innerWidth>= 1000 && viewport){
+    viewport.content = "initial-scale=0.7";
+}
 }
 
 zoomOutMobile();
