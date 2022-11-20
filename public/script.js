@@ -48,6 +48,8 @@ function changeCursor(e){
   }
 }
 document.addEventListener('touch',(e)=>{touchClick(e)})
+document.addEventListener('touchstart',(e)=>{touchClick(e)})
+document.addEventListener('touchmove',(e)=>{touchClick(e)})
 document.addEventListener( 'click',(e)=>{touchClick(e)})
 
 function touchClick(e){
@@ -85,16 +87,12 @@ function touchClick(e){
 }
 
 document.addEventListener('mousemove', event=>{mouseMoving(event)}) 
-
 document.addEventListener('touchmove', event=>{mouseMoving(event)}) 
-
+document.addEventListener('mousedown', event=>{drawStart(event)})
+document.addEventListener('touchstart', event=>{drawStart(event)})
 document.addEventListener('mouseup', ()=>{penDown = false})
-
 document.addEventListener('touchend', ()=>{penDown = false})
 
-document.addEventListener('mousedown', event=>{drawStart(event)})
-
-document.addEventListener('touchstart', event=>{drawStart(event)})
 
 function drawStart(event){
   const {x, y} = getCoords(event)
@@ -185,9 +183,7 @@ function penClicked(penInfo){
   }
 }
 
-socket.on("user", function (user){
-  if(localUser === ""){localUser = user}
-})
+socket.on("user", function (user){if(localUser === ""){localUser = user}})
 
 socket.on("disconnected", function(user){
   try{
@@ -213,12 +209,8 @@ function zoomOutMobile() {
     viewport.content = "initial-scale=0.1";    
     header.classList.add('resize')
   }
-  else if(window.innerWidth<= 800 && viewport){
-      viewport.content = "initial-scale=0.375";
-  }
-  else if(window.innerWidth<= 1200 && viewport){
-    viewport.content = "initial-scale=0.6";
-}
+  else if(window.innerWidth<= 800 && viewport){viewport.content = "initial-scale=0.375";}
+  else if(window.innerWidth<= 1200 && viewport){viewport.content = "initial-scale=0.6";}
 }
 
 zoomOutMobile();
