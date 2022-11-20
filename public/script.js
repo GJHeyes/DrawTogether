@@ -19,7 +19,7 @@ const socket = io(),
   purple = document.getElementById('purple'),
   black = document.getElementById('black'),
   lightBlue = document.getElementById('lightBlue');
-  
+  screenWidth = window.innerWidth
 let localUser = ""
 let previousColor = "black"
 let penDown = false
@@ -27,6 +27,7 @@ let mouseDown = false;
 let userArray = []
 let styleWidth = 50
 let styleHeight = 50
+
 
 document.addEventListener('mousemove', (e)=>{changeCursor(e)})
 
@@ -121,6 +122,7 @@ function getCoords(event){
 }
 
 function mouseMoving(event){
+  if(screenWidth !== window.innerWidth){zoomOutMobile();}
   const {pageX,pageY} = event
   const {x, y} = getCoords(event)
   if(myCursor.classList.contains("pipet") || myCursor .classList.contains("paintCan")){
@@ -207,3 +209,21 @@ socket.on("pendrawing", function (userInfo){
 })
 
 socket.on("penClick", function (penInfo){penClicked(penInfo)})
+
+function zoomOutMobile() {
+  var viewport = document.querySelector('meta[name="viewport"]');
+  console.log(window.innerHeight, window.innerWidth)
+  if(window.innerWidth<= 640 && viewport){
+      viewport.content = "initial-scale=0.1";
+      console.log(viewport.content)
+  }
+  else if(window.innerWidth<= 1280 && viewport){
+      viewport.content = "initial-scale=0.5";
+      header.classList.add('hidden')
+  }
+  else{
+    header.classList.remove('hidden')
+  }
+}
+
+zoomOutMobile();
