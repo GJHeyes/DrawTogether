@@ -28,13 +28,9 @@ let userArray = []
 let styleWidth = 50
 let styleHeight = 50
 
-document.addEventListener('mousemove', (e)=>{
-  changeCursor(e)
-})
+document.addEventListener('mousemove', (e)=>{changeCursor(e)})
 
-document.addEventListener('touchmove', (e)=>{
-  changeCursor(e)
-})
+document.addEventListener('touchmove', (e)=>{changeCursor(e)})
 
 function changeCursor(e){
   if(document.elementsFromPoint(e.x, e.y).includes(colourBox) && !myCursor.classList.contains("pipet")){
@@ -53,7 +49,6 @@ function changeCursor(e){
 
 document.addEventListener( 'click',(e)=>{
   const {pageX,pageY} = e
-  const {x, y} = getCoords(e)
   if(document.elementsFromPoint(e.x, e.y).includes(red)){ctx.strokeStyle = '#FF355E',myCursor.classList = ('cursor red pipet')}
   if(document.elementsFromPoint(e.x, e.y).includes(blue)){ctx.strokeStyle = '#0047AB',myCursor.classList = ('cursor blue pipet ')}
   if(document.elementsFromPoint(e.x, e.y).includes(yellow)){ctx.strokeStyle = '#FFFF00',myCursor.classList = ('cursor yellow pipet ')}
@@ -86,64 +81,17 @@ document.addEventListener( 'click',(e)=>{
     pageX:pageX, pageY:pageY, ctxColour: ctx.strokeStyle, penClassList: myCursor.classList, lineWidth: ctx.lineWidth, styleWidth: styleWidth, styleHeight:styleHeight, headerClassList : header.classList} )
 })
 
-function penClicked(penInfo){
-  const {userId, otherWidth, otherHeight,pageX,pageY,ctxColour, penClassList ,lineWidth, styleWidth, styleHeight, headerClassList} = penInfo
-  if(userId !== localUser){
-    const width = ((window.innerWidth-1180)/2) - ((otherWidth-1180)/2);
-    const height = ((window.innerHeight-620)/2) - ((otherHeight-620)/2); 
-    const userPen = document.getElementById(`userPen-${userId}`);
-    const userCanvas = document.getElementById(`userCanvas-${userId}`);
-    const ctxNew = userCanvas.getContext('2d')
-    if(headerClassList[0] !=="default"){header.classList = headerClassList[0]}
-    userPen.classList = `${penClassList[0]} ${penClassList[1]} ${penClassList[2]}`
-    ctxNew.lineWidth = lineWidth
-    ctxNew.strokeStyle = ctxColour
-    if(userPen.classList.contains("pipet")|| userPen.classList.contains("paintCan")){
-      userPen.setAttribute("style", `width: ${styleWidth}px; height: ${styleHeight}px;top: ${pageY+height-styleHeight}px; left: ${pageX+width}px`)
-    }else{
-      userPen.setAttribute("style", `width: ${styleWidth}px; height: ${styleHeight}px; top: ${pageY+height}px; left: ${pageX+width}px`)
-    }
-  }
-}
+document.addEventListener('mousemove', event=>{mouseMoving(event)}) 
 
-document.addEventListener('mousemove', event=>{
-  mouseMoving(event)
-}) 
-
-document.addEventListener('touchmove', event=>{
-  mouseMoving(event)
-}) 
-
-function mouseMoving(event){
-  const {pageX,pageY} = event
-  const {x, y} = getCoords(event)
-  if(myCursor.classList.contains("pipet") || myCursor .classList.contains("paintCan")){
-    myCursor.setAttribute("style", `width: ${styleWidth}px; height: ${styleHeight}px;top: ${pageY - styleHeight}px; left: ${pageX}px`)
-  }else{
-    myCursor.setAttribute("style", `width: ${myCursor.style.width}; height: ${myCursor.style.height}; top: ${pageY}px; left: ${pageX}px`)
-  }
-  if(penDown){
-    ctx.lineTo(x,y)
-    ctx.stroke()
-  }
-  socket.emit("pendrawing", {x: x, y: y, userId: localUser, penDown: penDown, otherWidth : window.innerWidth, otherHeight:window.innerHeight,
-  pageX:pageX, pageY:pageY, mouseDown: mouseDown, penClassList: myCursor.classList, styleWidth: styleWidth, styleHeight:styleHeight} )
-  if(mouseDown){
-    mouseDown = false;
-  }
-}
+document.addEventListener('touchmove', event=>{mouseMoving(event)}) 
 
 document.addEventListener('mouseup', ()=>{penDown = false})
 
 document.addEventListener('touchend', ()=>{penDown = false})
 
-document.addEventListener('mousedown', event=>{
-  drawStart(event)
-})
+document.addEventListener('mousedown', event=>{drawStart(event)})
 
-document.addEventListener('touchstart', event=>{
-  drawStart(event)
-})
+document.addEventListener('touchstart', event=>{drawStart(event)})
 
 function drawStart(event){
   const {x, y} = getCoords(event)
@@ -170,6 +118,25 @@ function getCoords(event){
   const {pageX,pageY} = event
   const {offsetLeft,offsetTop} = canvas 
   return {x: pageX - offsetLeft, y: pageY-offsetTop}
+}
+
+function mouseMoving(event){
+  const {pageX,pageY} = event
+  const {x, y} = getCoords(event)
+  if(myCursor.classList.contains("pipet") || myCursor .classList.contains("paintCan")){
+    myCursor.setAttribute("style", `width: ${styleWidth}px; height: ${styleHeight}px;top: ${pageY - styleHeight}px; left: ${pageX}px`)
+  }else{
+    myCursor.setAttribute("style", `width: ${myCursor.style.width}; height: ${myCursor.style.height}; top: ${pageY}px; left: ${pageX}px`)
+  }
+  if(penDown){
+    ctx.lineTo(x,y)
+    ctx.stroke()
+  }
+  socket.emit("pendrawing", {x: x, y: y, userId: localUser, penDown: penDown, otherWidth : window.innerWidth, otherHeight:window.innerHeight,
+  pageX:pageX, pageY:pageY, mouseDown: mouseDown, penClassList: myCursor.classList, styleWidth: styleWidth, styleHeight:styleHeight} )
+  if(mouseDown){
+    mouseDown = false;
+  }
 }
 
 function otherUserDrawing(userInfo){
@@ -199,6 +166,26 @@ function otherUserDrawing(userInfo){
   }
 }
 
+function penClicked(penInfo){
+  const {userId, otherWidth, otherHeight,pageX,pageY,ctxColour, penClassList ,lineWidth, styleWidth, styleHeight, headerClassList} = penInfo
+  if(userId !== localUser){
+    const width = ((window.innerWidth-1180)/2) - ((otherWidth-1180)/2);
+    const height = ((window.innerHeight-620)/2) - ((otherHeight-620)/2); 
+    const userPen = document.getElementById(`userPen-${userId}`);
+    const userCanvas = document.getElementById(`userCanvas-${userId}`);
+    const ctxNew = userCanvas.getContext('2d')
+    if(headerClassList[0] !=="default"){header.classList = headerClassList[0]}
+    userPen.classList = `${penClassList[0]} ${penClassList[1]} ${penClassList[2]}`
+    ctxNew.lineWidth = lineWidth
+    ctxNew.strokeStyle = ctxColour
+    if(userPen.classList.contains("pipet")|| userPen.classList.contains("paintCan")){
+      userPen.setAttribute("style", `width: ${styleWidth}px; height: ${styleHeight}px;top: ${pageY+height-styleHeight}px; left: ${pageX+width}px`)
+    }else{
+      userPen.setAttribute("style", `width: ${styleWidth}px; height: ${styleHeight}px; top: ${pageY+height}px; left: ${pageX+width}px`)
+    }
+  }
+}
+
 socket.on("user", function (user){
   if(localUser === ""){localUser = user}
 })
@@ -219,6 +206,4 @@ socket.on("pendrawing", function (userInfo){
   otherUserDrawing(userInfo)
 })
 
-socket.on("penClick", function (penInfo){
-  penClicked(penInfo)
-})
+socket.on("penClick", function (penInfo){penClicked(penInfo)})
