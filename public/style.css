@@ -118,10 +118,10 @@ button{
     position:absolute;
     font-size: 5vw;
     text-shadow:
-    -0.5vw 0px 0px rgb(255, 255, 255),
-    .5vw 0px 0px rgb(255, 255, 255),
-    0px -.5vw 0px rgb(255, 255, 255),
-    0px .5vw 0px rgb(255, 255, 255);
+    -0.3vw 0px 0px rgb(255, 255, 255),
+    .3vw 0px 0px rgb(255, 255, 255),
+    0px -.3vw 0px rgb(255, 255, 255),
+    0px .3vw 0px rgb(255, 255, 255);
 }
 
 #footer{
