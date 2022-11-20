@@ -207,7 +207,7 @@ function zoomOutMobile() {
   var viewport = document.querySelector('meta[name="viewport"]');
   if(window.innerWidth<= 640 && window.innerHeight>=640 && viewport){
     viewport.content = "initial-scale=0.1";    
-    header.classList.add('resize')
+    header.style.fontSize('15vw')
   }
   else if(window.innerWidth<= 800 && viewport){viewport.content = "initial-scale=0.375";}
   else if(window.innerWidth<= 1200 && viewport){viewport.content = "initial-scale=0.6";}
