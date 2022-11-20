@@ -90,6 +90,7 @@ function touchClick(e){
       myCursor.style.height = styleHeight - 10 + "px"
     }
   }}catch(error){
+    console.log(e)
     console.log(document.elementsFromPoint(e.x, e.y))
   }
     socket.emit("penClick", {userId: localUser, otherWidth : window.innerWidth, otherHeight:window.innerHeight,
