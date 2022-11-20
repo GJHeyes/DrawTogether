@@ -48,8 +48,12 @@ function changeCursor(e){
   }
 }
 
-document.addEventListener('touch',(e)=>{touchClick(e)})
-document.addEventListener('',(e)=>{touchClick(e)})
+document.addEventListener('touch',(e)=>{
+  touchClick(e)
+})
+document.addEventListener('',(e)=>{
+  touchClick(e)
+})
 document.addEventListener('touchstart',(e)=>{touchClick(e)})
 document.addEventListener('touchmove',(e)=>{touchClick(e)})
 document.addEventListener('click',(e)=>{touchClick(e)})
@@ -86,7 +90,7 @@ function touchClick(e){
       myCursor.style.height = styleHeight - 10 + "px"
     }
   }}catch(error){
-    console.log(document)
+    console.log(document.elementsFromPoint(e.x, e.y))
   }
     socket.emit("penClick", {userId: localUser, otherWidth : window.innerWidth, otherHeight:window.innerHeight,
     pageX:pageX, pageY:pageY, ctxColour: ctx.strokeStyle, penClassList: myCursor.classList, lineWidth: ctx.lineWidth, styleWidth: styleWidth, styleHeight:styleHeight, headerClassList : header.classList} )
