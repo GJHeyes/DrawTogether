@@ -3,10 +3,11 @@ const socket = io(),
   form = document.querySelector("#message-form"),
   input = document.querySelector("#chat"),
   myCursor = document.querySelector("#myCursor"),
+  canvasHolder = document.getElementById("canvasHolder"),
   canvas = document.getElementById('canvas'),
+  ctx = canvas.getContext('2d'),
   penBox = document.getElementById('penBox'),
   colourBox = document.getElementById('colourBox'),
-  canvasHolder = document.getElementById("canvasHolder"),
   addPenWidth = document.getElementById('addPenWidth'),
   removePenWidth = document.getElementById('removePenWidth'),
   header = document.getElementById('header')
@@ -18,17 +19,15 @@ const socket = io(),
   orange = document.getElementById('orange'),
   purple = document.getElementById('purple'),
   black = document.getElementById('black'),
-  lightBlue = document.getElementById('lightBlue'),
-  ctx = canvas.getContext('2d');
+  lightBlue = document.getElementById('lightBlue');
   
-let penDown = false
 let localUser = ""
-const colorArray = ["red","blue","yellow","green","pink","orange","purple"]
-let userArray = []
+let previousColor = "black"
+let penDown = false
 let mouseDown = false;
+let userArray = []
 let styleWidth = 50
 let styleHeight = 50
-let previousColor = "black"
 
 document.addEventListener('mousemove', (e)=>{
   if(document.elementsFromPoint(e.x, e.y).includes(colourBox) && !myCursor.classList.contains("pipet")){
@@ -46,7 +45,6 @@ document.addEventListener('mousemove', (e)=>{
 })
 
 document.addEventListener( 'click',(e)=>{
-  //elem = document.elementsFromPoint(e.x, e.y);
   if(document.elementsFromPoint(e.x, e.y).includes(red)){ctx.strokeStyle = '#FF355E',myCursor.classList = ('cursor red pipet')}
   if(document.elementsFromPoint(e.x, e.y).includes(blue)){ctx.strokeStyle = '#0047AB',myCursor.classList = ('cursor blue pipet ')}
   if(document.elementsFromPoint(e.x, e.y).includes(yellow)){ctx.strokeStyle = '#FFFF00',myCursor.classList = ('cursor yellow pipet ')}
@@ -58,7 +56,6 @@ document.addEventListener( 'click',(e)=>{
   if(document.elementsFromPoint(e.x, e.y).includes(lightBlue)){ctx.strokeStyle = '#72BCD4',myCursor.classList = ('cursor lightBlue pipet')}
   if(document.elementsFromPoint(e.x, e.y).includes(header)){header.classList = myCursor.classList[1]}
   if(document.elementsFromPoint(e.x, e.y).includes(addPenWidth)){
-
     if(parseInt(myCursor.style.width)<= 200){
       styleHeight += 10
       styleWidth += 10
@@ -97,9 +94,7 @@ document.addEventListener('mousemove', event=>{
   }
 }) 
 
-document.addEventListener('mouseup', event=>{
-  penDown = false
-})
+document.addEventListener('mouseup', ()=>{penDown = false})
 
 document.addEventListener('mousedown', event=>{
   const {x, y} = getCoords(event)
@@ -107,7 +102,6 @@ document.addEventListener('mousedown', event=>{
   mouseDown = true
   ctx.moveTo(x, y)
   ctx.beginPath()
-  
 })
 
 function addUser(user){
@@ -137,9 +131,7 @@ function otherUserDrawing(userInfo){
     const userPen = document.getElementById(`userPen-${userId}`);
     const userCanvas = document.getElementById(`userCanvas-${userId}`);
     const ctxNew = userCanvas.getContext('2d')
-    if(headerClassList[0] !=="default"){
-      header.classList = headerClassList[0]
-    }
+    if(headerClassList[0] !=="default"){header.classList = headerClassList[0]}
     userPen.classList = `${penClassList[0]} ${penClassList[1]} ${penClassList[2]}`
     ctxNew.lineWidth = lineWidth
     if(userPen .classList.contains("pipet")){
@@ -162,9 +154,7 @@ function otherUserDrawing(userInfo){
 }
 
 socket.on("user", function (user){
-  if(localUser === ""){
-    localUser = user
-  }
+  if(localUser === ""){localUser = user}
 })
 
 socket.on("disconnected", function(user){
@@ -172,21 +162,13 @@ socket.on("disconnected", function(user){
     const userPen = document.getElementById(`userPen-${user}`);
     penBox.removeChild(userPen)
     userArray = userArray.filter((i) => i !== user)
-  }catch(error){
-  }
+  }catch(error){}
 })
 
 socket.on("pendrawing", function (userInfo){
-  if(!document.getElementById(`userPen-${userInfo.userId}`)){
-    if(userInfo.userId !== localUser){
+  if(!document.getElementById(`userPen-${userInfo.userId}`) && userInfo.userId !== localUser){
       addUser(userInfo.userId)
       userArray.push(userInfo.userId)
-    }
   }
   otherUserDrawing(userInfo)
 })
-
-
-
-
-/*******************pendrawing***********************/
