@@ -31,19 +31,19 @@ let styleHeight = 50
 
 document.addEventListener('mousemove', (e)=>{changeCursor(e)})
 
-document.addEventListener('touchmove', (e)=>{changeCursor(e)})
+document.addEventListener('touch', (e)=>{changeCursor(e)})
 
 function changeCursor(e){
   if(document.elementsFromPoint(e.x, e.y).includes(colourBox) && !myCursor.classList.contains("pipet")){
     myCursor.classList.add("pipet"),myCursor.style.width = styleWidth
   }
-  if(!document.elementsFromPoint(e.x, e.y).includes(colourBox) && myCursor.classList.contains("pipet")){
+  else if(!document.elementsFromPoint(e.x, e.y).includes(colourBox) && myCursor.classList.contains("pipet")){
     myCursor.classList.remove("pipet"),myCursor.style.width = styleWidth
   }
-  if(document.elementsFromPoint(e.x, e.y).includes(header) && !myCursor.classList.contains("paintCan")){
+  else if(document.elementsFromPoint(e.x, e.y).includes(header) && !myCursor.classList.contains("paintCan")){
     myCursor.classList.add("paintCan"),myCursor.style.width = styleWidth
   }
-  if(!document.elementsFromPoint(e.x, e.y).includes(header) && myCursor.classList.contains("paintCan")){
+  else if(!document.elementsFromPoint(e.x, e.y).includes(header) && myCursor.classList.contains("paintCan")){
     myCursor.classList.remove("paintCan"),myCursor.style.width = styleWidth
   }
 }
@@ -53,16 +53,16 @@ document.addEventListener( 'click',(e)=>{touchClick(e)})
 function touchClick(e){
   const {pageX,pageY} = e
   if(document.elementsFromPoint(e.x, e.y).includes(red)){ctx.strokeStyle = '#FF355E',myCursor.classList = ('cursor red pipet')}
-  if(document.elementsFromPoint(e.x, e.y).includes(blue)){ctx.strokeStyle = '#0047AB',myCursor.classList = ('cursor blue pipet ')}
-  if(document.elementsFromPoint(e.x, e.y).includes(yellow)){ctx.strokeStyle = '#FFFF00',myCursor.classList = ('cursor yellow pipet ')}
-  if(document.elementsFromPoint(e.x, e.y).includes(green)){ctx.strokeStyle = '#50C878',myCursor.classList = ('cursor green pipet')}
-  if(document.elementsFromPoint(e.x, e.y).includes(pink)){ctx.strokeStyle = '#FFC0CB',myCursor.classList = ('cursor pink pipet')}
-  if(document.elementsFromPoint(e.x, e.y).includes(orange)){ctx.strokeStyle = '#FFA500',myCursor.classList = ('cursor orange pipet')}
-  if(document.elementsFromPoint(e.x, e.y).includes(purple)){ctx.strokeStyle = '#9F2B68',myCursor.classList = ('cursor purple pipet')}
-  if(document.elementsFromPoint(e.x, e.y).includes(black)){ctx.strokeStyle = '#000000',myCursor.classList = ('cursor black pipet')}
-  if(document.elementsFromPoint(e.x, e.y).includes(lightBlue)){ctx.strokeStyle = '#72BCD4',myCursor.classList = ('cursor lightBlue pipet')}
-  if(document.elementsFromPoint(e.x, e.y).includes(header)){header.classList = myCursor.classList[1]}
-  if(document.elementsFromPoint(e.x, e.y).includes(addPenWidth)){
+  else if(document.elementsFromPoint(e.x, e.y).includes(blue)){ctx.strokeStyle = '#0047AB',myCursor.classList = ('cursor blue pipet ')}
+  else if(document.elementsFromPoint(e.x, e.y).includes(yellow)){ctx.strokeStyle = '#FFFF00',myCursor.classList = ('cursor yellow pipet ')}
+  else if(document.elementsFromPoint(e.x, e.y).includes(green)){ctx.strokeStyle = '#50C878',myCursor.classList = ('cursor green pipet')}
+  else if(document.elementsFromPoint(e.x, e.y).includes(pink)){ctx.strokeStyle = '#FFC0CB',myCursor.classList = ('cursor pink pipet')}
+  else if(document.elementsFromPoint(e.x, e.y).includes(orange)){ctx.strokeStyle = '#FFA500',myCursor.classList = ('cursor orange pipet')}
+  else if(document.elementsFromPoint(e.x, e.y).includes(purple)){ctx.strokeStyle = '#9F2B68',myCursor.classList = ('cursor purple pipet')}
+  else if(document.elementsFromPoint(e.x, e.y).includes(black)){ctx.strokeStyle = '#000000',myCursor.classList = ('cursor black pipet')}
+  else if(document.elementsFromPoint(e.x, e.y).includes(lightBlue)){ctx.strokeStyle = '#72BCD4',myCursor.classList = ('cursor lightBlue pipet')}
+  else if(document.elementsFromPoint(e.x, e.y).includes(header)){header.classList = myCursor.classList[1]}
+  else if(document.elementsFromPoint(e.x, e.y).includes(addPenWidth)){
     if(parseInt(myCursor.style.width)<= 200){
       styleHeight += 10
       styleWidth += 10
@@ -71,7 +71,7 @@ function touchClick(e){
       myCursor.style.height = styleWidth + 10 + "px"
     }
   }
-  if(document.elementsFromPoint(e.x, e.y).includes(removePenWidth)){
+  else if(document.elementsFromPoint(e.x, e.y).includes(removePenWidth)){
     if(parseInt(myCursor.style.width) > 50){
       styleHeight -= 10
       styleWidth -= 10
@@ -137,9 +137,7 @@ function mouseMoving(event){
   }
   socket.emit("pendrawing", {x: x, y: y, userId: localUser, penDown: penDown, otherWidth : window.innerWidth, otherHeight:window.innerHeight,
   pageX:pageX, pageY:pageY, mouseDown: mouseDown, penClassList: myCursor.classList, styleWidth: styleWidth, styleHeight:styleHeight} )
-  if(mouseDown){
-    mouseDown = false;
-  }
+  if(mouseDown){mouseDown = false;}
 }
 
 function otherUserDrawing(userInfo){
@@ -163,9 +161,7 @@ function otherUserDrawing(userInfo){
     if(penDown){
       ctxNew.lineTo(x,y)
       ctxNew.stroke()
-    }else if(!penDown){
-      ctxNew.moveTo(x, y)
-    }
+    }else if(!penDown){ctxNew.moveTo(x, y)}
   }
 }
 
