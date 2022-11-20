@@ -10,29 +10,22 @@ body{
     overflow:hidden;
     justify-content: center;
     margin:0 !important;
+    -webkit-user-select: none; /* Safari */
+    -ms-user-select: none; /* IE 10 and IE 11 */
+    user-select: none; /* Standard syntax */
+    -webkit-user-drag: none;
+    -khtml-user-drag: none;
+    -moz-user-drag: none;
+    -o-user-drag: none;
 }
 
 canvas{
     z-index: 18;
     position: absolute;
-    background-color: rgba(255, 255, 255, 0);
-    -webkit-user-select: none; /* Safari */
-    -ms-user-select: none; /* IE 10 and IE 11 */
-    user-select: none; /* Standard syntax */
-    -webkit-user-drag: none;
-    -khtml-user-drag: none;
-    -moz-user-drag: none;
-    -o-user-drag: none;
+    background-color: rgba(255, 255, 255, 0);    
 }
 
 #canvasHolder{
-    -webkit-user-select: none; /* Safari */
-    -ms-user-select: none; /* IE 10 and IE 11 */
-    user-select: none; /* Standard syntax */
-    -webkit-user-drag: none;
-    -khtml-user-drag: none;
-    -moz-user-drag: none;
-    -o-user-drag: none;
     justify-self: center;
     align-self: center;
     display: flex;
@@ -41,13 +34,6 @@ canvas{
 }
 
 #background{
-    -webkit-user-select: none; /* Safari */
-    -ms-user-select: none; /* IE 10 and IE 11 */
-    user-select: none; /* Standard syntax */
-    -webkit-user-drag: none;
-    -khtml-user-drag: none;
-    -moz-user-drag: none;
-    -o-user-drag: none;
     box-shadow: 0px 0px 0px 5px black;
     width: 1180px;
     height: 620px;
@@ -80,9 +66,6 @@ button{
     margin: 5px;
     background-color: black;
     align-items: center;
-    -webkit-user-select: none; /* Safari */
-    -ms-user-select: none; /* IE 10 and IE 11 */
-    user-select: none; /* Standard syntax */
 }
 
 #colourBox{
@@ -134,9 +117,6 @@ button{
     .5vh 0px 0px rgb(255, 255, 255),
     0px -.5vh 0px rgb(255, 255, 255),
     0px .5vh 0px rgb(255, 255, 255);
-    -webkit-user-select: none; /* Safari */
-    -ms-user-select: none; /* IE 10 and IE 11 */
-    user-select: none; /* Standard syntax */
 }
 
 #footer{
@@ -149,9 +129,6 @@ button{
     .1vh 0px 0px rgb(255, 255, 255),
     0px -.1vh 0px rgb(255, 255, 255),
     0px .1vh 0px rgb(255, 255, 255);
-    -webkit-user-select: none; /* Safari */
-    -ms-user-select: none; /* IE 10 and IE 11 */
-    user-select: none; /* Standard syntax */
 }
 
 .hidden{
