@@ -116,7 +116,7 @@ button{
 #header{
     font-family: 'Galaxion', sans-serif;
     position:absolute;
-    font-size: 10vh;
+    font-size: 5vw;
     text-shadow:
     -0.5vh 0px 0px rgb(255, 255, 255),
     .5vh 0px 0px rgb(255, 255, 255),
