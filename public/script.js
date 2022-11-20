@@ -32,6 +32,8 @@ let styleHeight = 50
 document.addEventListener('mousemove', (e)=>{changeCursor(e)})
 
 document.addEventListener('touch', (e)=>{changeCursor(e)})
+document.addEventListener('touchmove',(e)=>{changeCursor(e)})
+document.addEventListener('click',(e)=>{changeCursor(e)})
 
 function changeCursor(e){
   if(document.elementsFromPoint(e.pageX, e.pageY).includes(colourBox) && !myCursor.classList.contains("pipet")){
@@ -55,8 +57,6 @@ document.addEventListener('',(e)=>{
   touchClick(e)
 })
 document.addEventListener('touchstart',(e)=>{touchClick(e)})
-document.addEventListener('touchmove',(e)=>{touchClick(e)})
-document.addEventListener('click',(e)=>{touchClick(e)})
 
 function touchClick(e){
   const {pageX,pageY} = e
