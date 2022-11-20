@@ -215,6 +215,7 @@ function zoomOutMobile() {
   var viewport = document.querySelector('meta[name="viewport"]');
   if(window.innerWidth<= 640 && window.innerHeight>=640 && viewport){
     viewport.content = "initial-scale=0.085";    
+    header.classList.add('resize')
   }
   else if(window.innerWidth<= 800 && viewport){
       viewport.content = "initial-scale=0.375";
