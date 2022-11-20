@@ -122,7 +122,6 @@ function getCoords(event){
 }
 
 function mouseMoving(event){
-  if(screenWidth !== window.innerWidth){zoomOutMobile();}
   const {pageX,pageY} = event
   const {x, y} = getCoords(event)
   if(myCursor.classList.contains("pipet") || myCursor .classList.contains("paintCan")){
