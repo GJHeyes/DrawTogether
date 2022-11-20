@@ -114,7 +114,7 @@ button{
 }
 
 #header{
-    z-index: 300;
+    z-index: 19;
     font-family: 'Galaxion', sans-serif;
     position:absolute;
     font-size: 5vw;
