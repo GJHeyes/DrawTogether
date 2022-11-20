@@ -1,4 +1,3 @@
-// io() is a method from the socket library added in our html file
 const socket = io(),
   form = document.querySelector("#message-form"),
   input = document.querySelector("#chat"),
