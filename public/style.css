@@ -171,3 +171,7 @@ button{
 .lightBlue{
     filter: invert(80%) sepia(13%) saturate(1397%) hue-rotate(159deg) brightness(88%) contrast(88%);
 }
+
+.resize{
+    font-size: 10vw;
+}
