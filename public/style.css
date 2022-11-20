@@ -115,12 +115,14 @@ button{
 #addPenWidth{
     background-color: #00ab66;
     border-color: #008952 !important;
+    color: #008952;
 }
 
 #removePenWidth{
     background-color: #ff0000;
     border-color: #a61022 !important;
     padding-bottom: 7px;
+    color: #a61022;
 }
 
 #header{
