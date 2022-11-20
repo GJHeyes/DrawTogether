@@ -111,13 +111,19 @@ function mouseMoving(event){
 
 document.addEventListener('mouseup', ()=>{penDown = false})
 
+document.addEventListener('touchstart', ()=>{penDown = false})
+
 document.addEventListener('mousedown', event=>{
+  drawStart(event)
+})
+
+function drawStart(event){
   const {x, y} = getCoords(event)
   penDown = true
   mouseDown = true
   ctx.moveTo(x, y)
   ctx.beginPath()
-})
+}
 
 function addUser(user){
   const userCanvas = document.createElement('canvas')
