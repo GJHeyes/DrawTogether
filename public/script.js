@@ -50,7 +50,7 @@ document.addEventListener( 'click',(e)=>{
   if(document.elementsFromPoint(e.x, e.y).includes(green)){ctx.strokeStyle = '#50C878',myCursor.classList = ('cursor green pipet')}
   if(document.elementsFromPoint(e.x, e.y).includes(pink)){ctx.strokeStyle = '#FFC0CB',myCursor.classList = ('cursor pink pipet')}
   if(document.elementsFromPoint(e.x, e.y).includes(orange)){ctx.strokeStyle = '#FFA500',myCursor.classList = ('cursor orange pipet')}
-  if(document.elementsFromPoint(e.x, e.y).includes(purple)){ctx.strokeStyle = '#A020F0',myCursor.classList = ('cursor purple pipet')}
+  if(document.elementsFromPoint(e.x, e.y).includes(purple)){ctx.strokeStyle = '#9F2B68',myCursor.classList = ('cursor purple pipet')}
   if(document.elementsFromPoint(e.x, e.y).includes(black)){ctx.strokeStyle = '#000000',myCursor.classList = ('cursor black pipet')}
   if(document.elementsFromPoint(e.x, e.y).includes(lightBlue)){ctx.strokeStyle = '#72BCD4',myCursor.classList = ('cursor lightBlue pipet')}
   if(document.elementsFromPoint(e.x, e.y).includes(header)){header.classList = myCursor.classList[1]}
