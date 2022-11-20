@@ -47,8 +47,10 @@ function changeCursor(e){
     myCursor.classList.remove("paintCan"),myCursor.style.width = styleWidth
   }
 }
+document.addEventListener('touch',(e)=>{touchClick(e)})
+document.addEventListener( 'click',(e)=>{touchClick(e)})
 
-document.addEventListener( 'click',(e)=>{
+function touchClick(e){
   const {pageX,pageY} = e
   if(document.elementsFromPoint(e.x, e.y).includes(red)){ctx.strokeStyle = '#FF355E',myCursor.classList = ('cursor red pipet')}
   if(document.elementsFromPoint(e.x, e.y).includes(blue)){ctx.strokeStyle = '#0047AB',myCursor.classList = ('cursor blue pipet ')}
@@ -80,7 +82,7 @@ document.addEventListener( 'click',(e)=>{
   }
     socket.emit("penClick", {userId: localUser, otherWidth : window.innerWidth, otherHeight:window.innerHeight,
     pageX:pageX, pageY:pageY, ctxColour: ctx.strokeStyle, penClassList: myCursor.classList, lineWidth: ctx.lineWidth, styleWidth: styleWidth, styleHeight:styleHeight, headerClassList : header.classList} )
-})
+}
 
 document.addEventListener('mousemove', event=>{mouseMoving(event)}) 
 
