@@ -59,9 +59,7 @@ document.addEventListener('touchmove',(e)=>{touchClick(e)})
 document.addEventListener('click',(e)=>{touchClick(e)})
 
 function touchClick(e){
-  console.log(e)
   const {pageX,pageY} = e
-  try{
   if(document.elementsFromPoint(pageX, pageY).includes(red)){ctx.strokeStyle = '#FF355E',myCursor.classList = ('cursor red pipet')}
   else if(document.elementsFromPoint(pageX, pageY).includes(blue)){ctx.strokeStyle = '#0047AB',myCursor.classList = ('cursor blue pipet ')}
   else if(document.elementsFromPoint(pageX, pageY).includes(yellow)){ctx.strokeStyle = '#FFFF00',myCursor.classList = ('cursor yellow pipet ')}
@@ -89,9 +87,6 @@ function touchClick(e){
       myCursor.style.width = styleWidth - 10 + "px"
       myCursor.style.height = styleHeight - 10 + "px"
     }
-  }}catch(error){
-    console.log(e)
-    console.log(document.elementsFromPoint(e.pageX, e.pageY))
   }
     socket.emit("penClick", {userId: localUser, otherWidth : window.innerWidth, otherHeight:window.innerHeight,
     pageX:pageX, pageY:pageY, ctxColour: ctx.strokeStyle, penClassList: myCursor.classList, lineWidth: ctx.lineWidth, styleWidth: styleWidth, styleHeight:styleHeight, headerClassList : header.classList} )
