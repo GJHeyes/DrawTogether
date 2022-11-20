@@ -29,6 +29,14 @@ let styleWidth = 50
 let styleHeight = 50
 
 document.addEventListener('mousemove', (e)=>{
+  changeCursor(e)
+})
+
+document.addEventListener('touchmove', (e)=>{
+  changeCursor(e)
+})
+
+function changeCursor(e){
   if(document.elementsFromPoint(e.x, e.y).includes(colourBox) && !myCursor.classList.contains("pipet")){
     myCursor.classList.add("pipet"),myCursor.style.width = styleWidth
   }
@@ -41,7 +49,7 @@ document.addEventListener('mousemove', (e)=>{
   if(!document.elementsFromPoint(e.x, e.y).includes(header) && myCursor.classList.contains("paintCan")){
     myCursor.classList.remove("paintCan"),myCursor.style.width = styleWidth
   }
-})
+}
 
 document.addEventListener( 'click',(e)=>{
   if(document.elementsFromPoint(e.x, e.y).includes(red)){ctx.strokeStyle = '#FF355E',myCursor.classList = ('cursor red pipet')}
@@ -75,6 +83,14 @@ document.addEventListener( 'click',(e)=>{
 })
 
 document.addEventListener('mousemove', event=>{
+  mouseMoving(event)
+}) 
+
+document.addEventListener('touchmove', event=>{
+  mouseMoving(event)
+}) 
+
+function mouseMoving(event){
   const {pageX,pageY} = event
   const {x, y} = getCoords(event)
   if(myCursor.classList.contains("pipet") || myCursor .classList.contains("paintCan")){
@@ -91,7 +107,7 @@ document.addEventListener('mousemove', event=>{
   if(mouseDown){
     mouseDown = false;
   }
-}) 
+}
 
 document.addEventListener('mouseup', ()=>{penDown = false})
 
