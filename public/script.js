@@ -215,7 +215,7 @@ function zoomOutMobile() {
   console.log(window.innerHeight, window.innerWidth)
   if(window.innerWidth<= 640 && viewport){
       viewport.content = "initial-scale=0.1";
-      console.log(viewport.content)
+      header.classList.add('hidden')
   }
   else if(window.innerWidth<= 1280 && viewport){
       viewport.content = "initial-scale=0.5";
