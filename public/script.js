@@ -213,7 +213,7 @@ socket.on("penClick", function (penInfo){penClicked(penInfo)})
 function zoomOutMobile() {
   var viewport = document.querySelector('meta[name="viewport"]');
   console.log(window.innerHeight, window.innerWidth)
-  if(window.innerWidth<= 640 && viewport){
+  if(window.innerWidth<= 640 && window.innerHeight>=640 && viewport){
       viewport.content = "initial-scale=0.1";
       header.classList.add('hidden')
   }
