@@ -149,7 +149,7 @@ function otherUserDrawing(userInfo){
     const height = ((window.innerHeight-620)/2) - ((otherHeight-620)/2); 
     const userPen = document.getElementById(`userPen-${userId}`);
     const userCanvas = document.getElementById(`userCanvas-${userId}`);
-    const ctx = userCanvas.getContext('2d')
+    const ctxOther = userCanvas.getContext('2d')
     userPen.classList = `${penClassList[0]} ${penClassList[1]} ${penClassList[2]}`
     if(userPen.classList.contains("pipet")|| userPen.classList.contains("paintCan")){
       userPen.setAttribute("style", `width: ${styleWidth}px; height: ${styleHeight}px;top: ${pageY+height-styleHeight}px; left: ${pageX+width}px`)
@@ -157,13 +157,13 @@ function otherUserDrawing(userInfo){
       userPen.setAttribute("style", `width: ${styleWidth}px; height: ${styleHeight}px; top: ${pageY+height}px; left: ${pageX+width}px`)
     }
     if(mouseDown){
-      ctx.moveTo(x, y)
-      ctx.beginPath()
+      ctxOther.moveTo(x, y)
+      ctxOther.beginPath()
     }
     if(penDown){
-      ctx.lineTo(x,y)
-      ctx.stroke()
-    }else if(!penDown){ctx.moveTo(x, y)}
+      ctxOther.lineTo(x,y)
+      ctxOther.stroke()
+    }else if(!penDown){ctxOther.moveTo(x, y)}
   }
 }
 
@@ -174,11 +174,11 @@ function penClicked(penInfo){
     const height = ((window.innerHeight-620)/2) - ((otherHeight-620)/2); 
     const userPen = document.getElementById(`userPen-${userId}`);
     const userCanvas = document.getElementById(`userCanvas-${userId}`);
-    const ctx = userCanvas.getContext('2d')
+    const ctxOther = userCanvas.getContext('2d')
     if(headerClassList[0] !=="default"){header.classList = headerClassList[0]}
     userPen.classList = `${penClassList[0]} ${penClassList[1]} ${penClassList[2]}`
-    ctx.lineWidth = lineWidth
-    ctx.strokeStyle = ctxColour
+    ctxOther.lineWidth = lineWidth
+    ctxOther.strokeStyle = ctxColour
     if(userPen.classList.contains("pipet")|| userPen.classList.contains("paintCan")){
       userPen.setAttribute("style", `width: ${styleWidth}px; height: ${styleHeight}px;top: ${pageY+height-styleHeight}px; left: ${pageX+width}px`)
     }else{
