@@ -2,11 +2,11 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <link rel="stylesheet" href="style.css"/>
-    <link href="https://fonts.cdnfonts.com/css/galaxion" rel="stylesheet">
-    <link rel="icon" type="image/png" href="./images/favicon.png"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <link href="https://fonts.cdnfonts.com/css/galaxion" rel="stylesheet" />
+    <link rel="icon" type="image/png" href="./images/favicon.png" />
     <title>Draw Together</title>
   </head>
   <body>
@@ -22,17 +22,21 @@
       <button id="yellow" class="yellow"></button>
       <button id="orange" class="orange"></button>
     </section>
-  <section id="sizeBox">
-    <button id="addPenWidth" class="sizeButton">+</button>
-    <button id="removePenWidth" class="sizeButton">-</button>
-  </section>
-    <div id="myCursor" class="cursor default" style= "width:50px; height:50px"></div>
+    <section id="sizeBox">
+      <button id="addPenWidth" class="sizeButton">+</button>
+      <button id="removePenWidth" class="sizeButton">-</button>
+    </section>
+    <div
+      id="myCursor"
+      class="cursor default"
+      style="width: 50px; height: 50px"
+    ></div>
     <div id="penBox"></div>
-      <div id="canvasHolder">
-        <div id="background"></div>
-        <canvas id="canvas" width="1180" height="620"></canvas>
-      </div>
-      <footer id="footer" class="pink">GJHeyes</footer>
+    <div id="canvasHolder">
+      <div id="background"></div>
+      <canvas id="canvas" width="1180" height="620"></canvas>
+    </div>
+    <footer id="footer" class="pink">GJHeyes</footer>
     <script src="/socket.io/socket.io.js"></script>
     <script src="./script.js"></script>
   </body>

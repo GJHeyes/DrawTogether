@@ -2,3 +2,4 @@
 button to save
 button to reset --- do you agree? ---location.reload();
 zoom in and out button
+slider for size

@@ -1,175 +1,179 @@
-html{
-    overflow:hidden;
+html {
+  overflow: hidden;
 }
 
-body{
-    position: relative;
-    background-color: rgb(0, 0, 0);
-    background-image: url("https://media3.giphy.com/media/l0CRCxtNyUteI6hI4/giphy.gif?cid=ecf05e47fdcwbg5n04qmuzvfvwdimjwyrdf6s91yseem4uv8&rid=giphy.gif&ct=g");
-    background-size: cover;
-    background-repeat:round;
-    display: flex;
-    height: 100vh;
-    width: 100vw;
-    cursor: none;
-    overflow:hidden;
-    justify-content: center;
-    margin:0 !important;
-    -webkit-user-select: none; /* Safari */
-    -ms-user-select: none; /* IE 10 and IE 11 */
-    user-select: none; /* Standard syntax */
-    -webkit-user-drag: none;
-    -khtml-user-drag: none;
-    -moz-user-drag: none;
-    -o-user-drag: none;
+body {
+  position: relative;
+  background-color: rgb(0, 0, 0);
+  background-image: url("https://media3.giphy.com/media/l0CRCxtNyUteI6hI4/giphy.gif?cid=ecf05e47fdcwbg5n04qmuzvfvwdimjwyrdf6s91yseem4uv8&rid=giphy.gif&ct=g");
+  background-size: cover;
+  background-repeat: round;
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+  cursor: none;
+  overflow: hidden;
+  justify-content: center;
+  margin: 0 !important;
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10 and IE 11 */
+  user-select: none; /* Standard syntax */
+  -webkit-user-drag: none;
+  -khtml-user-drag: none;
+  -moz-user-drag: none;
+  -o-user-drag: none;
 }
 
-canvas{
-    z-index: 18;
-    position: absolute;
-    background-color: rgba(255, 255, 255, 0);    
+canvas {
+  z-index: 18;
+  position: absolute;
+  background-color: rgba(255, 255, 255, 0);
 }
 
-#canvasHolder{
-    justify-self: center;
-    align-self: center;
-    display: flex;
-    width: 1180px;
-    height: 620px;
+#canvasHolder {
+  justify-self: center;
+  align-self: center;
+  display: flex;
+  width: 1180px;
+  height: 620px;
 }
 
-#background{
-    box-shadow: 0px 0px 0px 5px black;
-    width: 1180px;
-    height: 620px;
-    background-color: white;
+#background {
+  box-shadow: 0px 0px 0px 5px black;
+  width: 1180px;
+  height: 620px;
+  background-color: white;
 }
 
-.cursor{
-    display: flex;
-    z-index: 20;
-    position: absolute;
-    background-image: url("./images/pencil.png");
-    background-size: cover;
+.cursor {
+  display: flex;
+  z-index: 20;
+  position: absolute;
+  background-image: url("./images/pencil.png");
+  background-size: cover;
 }
 
-.pipet{
-    z-index: 20;
-    background-image: url("./images/dropper.png") !important;
+.pipet {
+  z-index: 20;
+  background-image: url("./images/dropper.png") !important;
 }
 
-.paintCan{
-    z-index: 20;
-    background-image: url("./images/paint-bucket.png") !important;
+.paintCan {
+  z-index: 20;
+  background-image: url("./images/paint-bucket.png") !important;
 }
 
-button{ 
-    border: 5px rgb(103, 103, 103) solid!important;
-    cursor: none;
-    width: 60px;
-    height: 60px;
-    margin: 5px;
-    background-color: black;
-    align-items: center;
+button {
+  border: 5px rgb(103, 103, 103) solid !important;
+  cursor: none;
+  width: 60px;
+  height: 60px;
+  margin: 5px;
+  background-color: black;
+  align-items: center;
 }
 
-#colourBox{
-    z-index: 19;
-    top: calc(50% - 315px);
-    left: calc(((100vw - 1180px)/2) - 100px);
-    position: fixed;
-    display: flex;
-    flex-direction: column;
-    height: fit-content;
-    width: fit-content;
+#colourBox {
+  z-index: 19;
+  top: calc(50% - 315px);
+  left: calc(((100vw - 1180px) / 2) - 100px);
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  height: fit-content;
+  width: fit-content;
 }
 
-#sizeBox{
-    z-index: 19;
-    top: calc(50% - 70px);
-    right: calc(((100vw - 1180px)/2) - 100px);
-    position: fixed;
-    display: flex;
-    flex-direction: column;
-    height: fit-content;
-    width: fit-content;
+#sizeBox {
+  z-index: 19;
+  top: calc(50% - 70px);
+  right: calc(((100vw - 1180px) / 2) - 100px);
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  height: fit-content;
+  width: fit-content;
 }
 
-.sizeButton{
-    font-size: 20px;
-    text-align: center;
+.sizeButton {
+  font-size: 20px;
+  text-align: center;
 }
 
-#addPenWidth{
-    background-color: #00ab66;
-    border-color: #008952 !important;
-    color: #008952;
+#addPenWidth {
+  background-color: #00ab66;
+  border-color: #008952 !important;
+  color: #008952;
 }
 
-#removePenWidth{
-    background-color: #ff0000;
-    border-color: #a61022 !important;
-    padding-bottom: 7px;
-    color: #a61022;
+#removePenWidth {
+  background-color: #ff0000;
+  border-color: #a61022 !important;
+  padding-bottom: 7px;
+  color: #a61022;
 }
 
-#header{
-    text-align: center;
-    z-index: 19;
-    font-family: 'Galaxion', sans-serif;
-    position:absolute;
-    font-size: 10vh;
-    text-shadow:
-    -0.3vw 0px 0px rgb(255, 255, 255),
-    .3vw 0px 0px rgb(255, 255, 255),
-    0px -.3vw 0px rgb(255, 255, 255),
-    0px .3vw 0px rgb(255, 255, 255);
+#header {
+  text-align: center;
+  z-index: 19;
+  font-family: "Galaxion", sans-serif;
+  position: absolute;
+  font-size: 10vh;
+  text-shadow: -0.3vw 0px 0px rgb(255, 255, 255),
+    0.3vw 0px 0px rgb(255, 255, 255), 0px -0.3vw 0px rgb(255, 255, 255),
+    0px 0.3vw 0px rgb(255, 255, 255);
 }
 
-#footer{
-    font-family: 'Galaxion', sans-serif;
-    position:absolute;
-    align-self: flex-end;
-    font-size: 2vh;
-    text-shadow:
-    -0.1vh 0px 0px rgb(255, 255, 255),
-    .1vh 0px 0px rgb(255, 255, 255),
-    0px -.1vh 0px rgb(255, 255, 255),
-    0px .1vh 0px rgb(255, 255, 255);
+#footer {
+  font-family: "Galaxion", sans-serif;
+  position: absolute;
+  align-self: flex-end;
+  font-size: 2vh;
+  text-shadow: -0.1vh 0px 0px rgb(255, 255, 255),
+    0.1vh 0px 0px rgb(255, 255, 255), 0px -0.1vh 0px rgb(255, 255, 255),
+    0px 0.1vh 0px rgb(255, 255, 255);
 }
 
-.hidden{
-    display: none;
+.hidden {
+  display: none;
 }
 
-.red{
-    filter: invert(32%) sepia(71%) saturate(3779%) hue-rotate(332deg) brightness(111%) contrast(102%);
+.red {
+  filter: invert(32%) sepia(71%) saturate(3779%) hue-rotate(332deg)
+    brightness(111%) contrast(102%);
 }
 
-.blue{
-    filter: invert(16%) sepia(98%) saturate(2361%) hue-rotate(207deg) brightness(95%) contrast(103%);
+.blue {
+  filter: invert(16%) sepia(98%) saturate(2361%) hue-rotate(207deg)
+    brightness(95%) contrast(103%);
 }
 
-.yellow{
-    filter: invert(80%) sepia(67%) saturate(1131%) hue-rotate(357deg) brightness(100%) contrast(106%);
+.yellow {
+  filter: invert(80%) sepia(67%) saturate(1131%) hue-rotate(357deg)
+    brightness(100%) contrast(106%);
 }
 
-.green{
-    filter: invert(67%) sepia(65%) saturate(377%) hue-rotate(87deg) brightness(90%) contrast(86%);
+.green {
+  filter: invert(67%) sepia(65%) saturate(377%) hue-rotate(87deg)
+    brightness(90%) contrast(86%);
 }
 
-.pink{
-    filter: invert(87%) sepia(91%) saturate(1299%) hue-rotate(287deg) brightness(109%) contrast(102%);
+.pink {
+  filter: invert(87%) sepia(91%) saturate(1299%) hue-rotate(287deg)
+    brightness(109%) contrast(102%);
 }
 
-.orange{
-    filter: invert(75%) sepia(48%) saturate(4780%) hue-rotate(1deg) brightness(104%) contrast(104%);
+.orange {
+  filter: invert(75%) sepia(48%) saturate(4780%) hue-rotate(1deg)
+    brightness(104%) contrast(104%);
 }
 
-.purple{
-    filter: invert(24%) sepia(38%) saturate(2360%) hue-rotate(293deg) brightness(95%) contrast(96%);
+.purple {
+  filter: invert(24%) sepia(38%) saturate(2360%) hue-rotate(293deg)
+    brightness(95%) contrast(96%);
 }
 
-.lightBlue{
-    filter: invert(80%) sepia(13%) saturate(1397%) hue-rotate(159deg) brightness(88%) contrast(88%);
+.lightBlue {
+  filter: invert(80%) sepia(13%) saturate(1397%) hue-rotate(159deg)
+    brightness(88%) contrast(88%);
 }
