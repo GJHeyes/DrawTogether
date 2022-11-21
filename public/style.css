@@ -117,7 +117,7 @@ button{
     z-index: 19;
     font-family: 'Galaxion', sans-serif;
     position:absolute;
-    font-size: 5vw;
+    font-size: 10vh;
     text-shadow:
     -0.3vw 0px 0px rgb(255, 255, 255),
     .3vw 0px 0px rgb(255, 255, 255),
