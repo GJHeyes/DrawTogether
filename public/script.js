@@ -51,13 +51,14 @@ function changeCursor(e){
 document.addEventListener('touch',(e)=>{
   touchClick(e)
 })
-document.addEventListener('',(e)=>{
+document.addEventListener('click',(e)=>{
   touchClick(e)
 })
 document.addEventListener('touchstart',(e)=>{touchClick(e)})
 
 function touchClick(e){
   const {pageX,pageY} = e
+  console.log(document.elementsFromPoint(pageX, pageY))
   if(document.elementsFromPoint(pageX, pageY).includes(red)){ctx.strokeStyle = '#FF355E',myCursor.classList = ('cursor red pipet')}
   else if(document.elementsFromPoint(pageX, pageY).includes(blue)){ctx.strokeStyle = '#0047AB',myCursor.classList = ('cursor blue pipet ')}
   else if(document.elementsFromPoint(pageX, pageY).includes(yellow)){ctx.strokeStyle = '#FFFF00',myCursor.classList = ('cursor yellow pipet ')}
