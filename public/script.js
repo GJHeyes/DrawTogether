@@ -69,7 +69,7 @@ function touchClick(e){
   else if(document.elementsFromPoint(pageX, pageY).includes(lightBlue)){ctx.strokeStyle = '#72BCD4',myCursor.classList = ('cursor lightBlue pipet')}
   else if(document.elementsFromPoint(pageX, pageY).includes(header)){header.classList = myCursor.classList[1]}
   else if(document.elementsFromPoint(pageX, pageY).includes(addPenWidth)){
-    if(parseInt(myCursor.style.width)<= 200){
+    if(parseInt(ctx.lineWidth)< 15){
       styleHeight += 10
       styleWidth += 10
       ctx.lineWidth+=1;
@@ -78,7 +78,7 @@ function touchClick(e){
     }
   }
   else if(document.elementsFromPoint(e.pageX, e.pageY).includes(removePenWidth)){
-    if(parseInt(myCursor.style.width) > 50){
+    if(parseInt(ctx.lineWidth) > 1){
       styleHeight -= 10
       styleWidth -= 10
       ctx.lineWidth-=1;
