@@ -114,6 +114,7 @@ button{
 }
 
 #header{
+    text-align: center;
     z-index: 19;
     font-family: 'Galaxion', sans-serif;
     position:absolute;
